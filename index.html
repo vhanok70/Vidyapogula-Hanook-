@@ -3,231 +3,173 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Profile Card — Modern</title>
-
-  <!-- Google font (optional) -->
+  <title>Profile — Hanook</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#f6f7fb;
-      --card:#ffffff;
-      --muted:#7b8794;
-      --accent:#1f6feb;
-      --accent-2:#163f7a;
-      --shadow: 0 6px 20px rgba(18, 35, 63, 0.07);
-      --radius:14px;
-      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      --bg:#f6f7fb; --card:#fff; --muted:#7b8794; --accent:#1f6feb; --accent-2:#163f7a;
+      --shadow: 0 8px 30px rgba(18,35,63,0.07); --radius:14px; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
     }
+    html,body{height:100%;margin:0;background:var(--bg);color:#0f1724;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    .wrap{max-width:980px;margin:28px auto;padding:18px;}
 
-    html,body{height:100%;margin:0;background:linear-gradient(180deg,#eaf3ff 0%, #f6f7fb 60%);color:#1f2937}
-    .container{max-width:920px;margin:28px auto;padding:20px;}
-    /* hero */
+    /* theme system (classes applied to body) */
+    body.theme-luxury { --bg:#0b1020; --card:#0d1220; --muted:#9aa4b2; --accent:#d0a84c; --accent-2:#f5d07a; color:#eef2f8; --shadow: 0 18px 50px rgba(0,0,0,0.6); }
+    body.theme-dark { --bg:#0b1220; --card:#0f1724; --muted:#99a3b2; --accent:#2b9cff; --accent-2:#1f6feb; color:#e6eef8; --shadow: 0 14px 40px rgba(6,10,18,0.6); }
+    body.theme-light { --bg:linear-gradient(180deg,#f8fbff,#f1f6fb); --card:#ffffff; --muted:#6b7280; --accent:#1f6feb; --accent-2:#163f7a; color:#0f1724; --shadow: 0 8px 24px rgba(18,35,63,0.06); }
+    body.theme-gradient { --bg: linear-gradient(180deg,#0f76c0,#1fb0d9); --card:rgba(255,255,255,0.96); --muted:#254a6a; --accent:#083e6b; --accent-2:#0f4a8a; color:#062133; --shadow: 0 12px 36px rgba(8,44,76,0.2); }
+    body.theme-corp { --bg:#f3f5f9; --card:#ffffff; --muted:#566270; --accent:#0b5cff; --accent-2:#093d8b; color:#0b1720; --shadow: 0 6px 18px rgba(15,23,30,0.06); }
+
     .hero{
-      background:linear-gradient(180deg,#0f6fb7 0%, #0d8bd1 60%);
-      color:white;padding:36px;border-radius:18px;box-shadow:var(--shadow);position:relative;overflow:hidden;
+      background:var(--bg); border-radius:14px;padding:22px;box-shadow:var(--shadow); color:inherit;
+      display:flex;align-items:flex-start;gap:18px;flex-wrap:wrap;
     }
-    .hero h1{font-size:28px;margin:0 0 12px 0;font-weight:700;line-height:1.05}
-    .hero p{margin:0 0 18px 0;color:rgba(255,255,255,0.95);opacity:0.95}
-    .hero .cta{
-      display:inline-block;padding:12px 22px;border-radius:999px;background:linear-gradient(90deg, #142a59,#1f6feb);box-shadow:0 6px 18px rgba(31,111,235,0.18);text-decoration:none;color:#fff;font-weight:600
-    }
+    .hero-left{flex:1;min-width:260px}
+    .hero h1{margin:0;font-size:20px;font-weight:800}
+    .hero p{margin:8px 0 12px;color:var(--muted)}
+    .cta{display:inline-block;padding:10px 14px;border-radius:999px;background:linear-gradient(90deg,var(--accent-2),var(--accent));color:white;text-decoration:none;font-weight:700}
 
-    /* profile card area */
-    .profile-wrap{display:flex;gap:18px;margin-top:20px;align-items:flex-start}
-    @media (max-width:880px){ .profile-wrap{flex-direction:column} }
+    /* profile area */
+    .profile-grid{display:grid;grid-template-columns:1fr 340px;gap:18px;margin-top:18px}
+    @media(max-width:880px){ .profile-grid{grid-template-columns:1fr} }
 
-    .card{
-      background:var(--card);
-      border-radius:18px;
-      padding:22px;
-      box-shadow:var(--shadow);
-      width:100%;
-    }
+    .card{background:var(--card);border-radius:14px;padding:18px;box-shadow:var(--shadow);color:inherit}
+    .profile-card{padding-top:46px;position:relative;overflow:visible}
+    .avatar-wrap{position:absolute;left:28px;top:-46px}
+    .avatar{width:110px;height:110px;border-radius:999px;border:6px solid var(--card);object-fit:cover;display:block;box-shadow:0 8px 30px rgba(2,8,24,0.25);background:linear-gradient(180deg,#fff,#f7fbff);cursor:pointer}
 
-    /* profile header */
-    .profile-header{text-align:center;border-radius:14px;padding-bottom:10px}
-    .avatar{
-      width:110px;height:110px;border-radius:999px;background:linear-gradient(180deg,#fff,#f2f6ff);display:inline-block;padding:6px;border:6px solid #fff;box-shadow:0 6px 18px rgba(18,35,63,0.06);
-      margin-top:-64px;object-fit:cover;
-    }
-    .name{font-size:26px;font-weight:800;margin:12px 0 4px}
-    .title{color:var(--muted);font-weight:600;margin-bottom:8px}
+    /* avatar styles */
+    .avatar.shadow{box-shadow:0 18px 40px rgba(2,8,24,0.45)}
+    .avatar.frame{border-radius:18px;border:6px solid rgba(255,255,255,0.06);background:linear-gradient(180deg,#0b63a8,#063a6a);padding:6px}
+    .name{font-size:22px;font-weight:800;margin:6px 0 0}
+    .title{color:var(--muted);font-weight:600;margin-bottom:6px}
 
-    /* tabs */
-    .tabs{display:flex;gap:0;border-top:1px solid #eef2f7;margin-top:14px;border-radius:12px;overflow:hidden;background:#fff;}
-    .tab-btn{flex:1;padding:14px 10px;text-align:center;color:#6b7280;background:transparent;border:none;cursor:pointer;font-weight:600}
-    .tab-btn.active{color:var(--accent);box-shadow:inset 0 -3px 0 var(--accent);background:#fff}
+    .tabs{display:flex;gap:0;border-top:1px solid rgba(0,0,0,0.04);margin-top:14px;border-radius:12px;overflow:hidden;background:transparent}
+    .tab-btn{flex:1;padding:12px 8px;text-align:center;color:var(--muted);border:0;background:transparent;font-weight:700;cursor:pointer}
+    .tab-btn.active{color:var(--accent);box-shadow:inset 0 -3px 0 var(--accent)}
 
-    /* content area */
-    .content{padding:18px 8px}
-    .section-title{font-weight:700;margin-bottom:12px;color:#1f2937}
-    .email-list{display:flex;flex-direction:column;gap:12px}
-    .email-item{display:flex;align-items:center;gap:12px}
-    .email-icon{width:36px;height:36px;border-radius:8px;background:#f1f7ff;display:grid;place-items:center;color:var(--accent);font-weight:700}
-    .email-text{display:flex;flex-direction:column}
+    .content{padding-top:12px}
+    .section-title{font-weight:700;margin-bottom:12px}
+    .email-list{display:flex;flex-direction:column;gap:10px}
+    .email-item{display:flex;gap:12px;align-items:flex-start}
+    .email-icon{width:36px;height:36px;border-radius:8px;background:rgba(0,0,0,0.04);display:grid;place-items:center;color:var(--accent);font-weight:700}
     .email-text .address{color:var(--accent);text-decoration:none;font-weight:600}
     .email-text .meta{color:var(--muted);font-size:13px;margin-top:2px}
-
-    .phone{display:flex;align-items:center;gap:12px;margin-top:12px}
+    .phone{margin-top:12px;display:flex;align-items:center;gap:12px}
     .phone .pnum{font-weight:700;color:var(--accent-2)}
 
-    /* company cards */
-    .company-grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:8px}
-    @media(min-width:700px){ .company-grid{grid-template-columns:1fr 1fr} }
-    .company{
-      background:linear-gradient(180deg,#ffffff,#fbfdff);
-      border-radius:12px;padding:14px;border:1px solid #eef3f8;box-shadow:0 6px 18px rgba(12,30,60,0.04);display:flex;flex-direction:column;gap:12px;min-height:120px;
-    }
-    .company .logo{height:64px;display:flex;align-items:center;justify-content:center}
-    .company .name{font-weight:700}
-    .company a{color:var(--accent);text-decoration:none;font-weight:600;font-size:14px}
+    .profile-right .company{display:flex;gap:12px;align-items:center;padding:12px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border:1px solid rgba(0,0,0,0.04);margin-bottom:12px}
 
-    /* QR / companies tab placeholder */
-    .qr-placeholder{display:grid;place-items:center;padding:30px;border-radius:12px;background:#fbfdff;border:1px dashed #e6eef8;color:var(--muted)}
+    /* theme switcher UI */
+    .controls{display:flex;gap:8px;align-items:center;margin-left:auto}
+    .select, .btn{padding:8px 10px;border-radius:8px;border:0;background:rgba(255,255,255,0.06);color:inherit;cursor:pointer;font-weight:700}
+    .smallmuted{font-size:13px;color:var(--muted)}
 
-    /* small footer helper */
-    .small{font-size:13px;color:var(--muted);margin-top:8px}
-
-    /* subtle container with white card under hero for the search panel*/
-    .search-panel{
-      margin-top:18px;background:#fff;border-radius:14px;padding:14px;box-shadow:var(--shadow);
-    }
-
-    /* utilities */
-    .muted{color:var(--muted)}
-    .divider{height:1px;background:#f1f5f9;margin:14px 0;border-radius:3px}
+    /* responsive tweaks */
+    @media(max-width:520px){ .avatar-wrap{left:22px;top:-56px}.avatar{width:96px;height:96px} .hero h1{font-size:18px} .name{font-size:20px} }
   </style>
 </head>
-<body>
-  <div class="container">
-    <!-- HERO -->
-    <div class="hero">
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;">
-        <div style="max-width:66%">
-          <h1>Discover Global Supply Chains In a Faster World</h1>
-          <p>AI-powered procurement intelligence for modern businesses — search suppliers, companies and more.</p>
-          <a class="cta" href="#profile">Enable AI Search</a>
-        </div>
-        <div style="min-width:72px;display:flex;align-items:center;justify-content:center">
-          <!-- small logo circle -->
-          <div style="width:64px;height:64px;border-radius:999px;background:white;display:grid;place-items:center;color:#0b4a85;font-weight:800">P</div>
-        </div>
+<body class="theme-luxury">
+  <div class="wrap">
+    <!-- top hero with controls -->
+    <div class="hero card" role="banner">
+      <div class="hero-left">
+        <h1>Discover Global Supply Chains In a Faster World</h1>
+        <p>AI-powered procurement intelligence for modern businesses — search suppliers, companies and more.</p>
+        <a class="cta" href="#profile">Enable AI Search</a>
       </div>
 
-      <div class="search-panel" style="margin-top:18px">
-        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-          <button style="padding:9px 14px;border-radius:999px;background:#f1f9ff;border:1px solid #e6f0fb;font-weight:700">Supplier</button>
-          <button style="padding:9px 14px;border-radius:999px;background:transparent;border:0;color:var(--muted)">Buyer (Leads)</button>
-          <button style="padding:9px 14px;border-radius:999px;background:transparent;border:0;color:var(--muted)">HS Code</button>
-          <button style="padding:9px 14px;border-radius:999px;background:transparent;border:0;color:var(--muted)">Item</button>
-        </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <div class="controls">
+          <label class="smallmuted" for="theme">Theme</label>
+          <select id="theme" class="select" aria-label="Theme switcher">
+            <option value="theme-luxury">Luxury</option>
+            <option value="theme-dark">Dark</option>
+            <option value="theme-light">Light Modern</option>
+            <option value="theme-gradient">Gradient Glossy</option>
+            <option value="theme-corp">Corporate</option>
+          </select>
 
-        <div style="margin-top:12px;display:flex;gap:12px;align-items:center">
-          <input id="search" placeholder="Search suppliers by company name" style="flex:1;padding:14px;border-radius:12px;border:1px solid #e9f0f6;outline:none;font-size:14px" />
-          <button style="padding:12px 18px;border-radius:12px;background:linear-gradient(90deg,#163f7a,#1f6feb);color:white;border:0;font-weight:700">Search</button>
+          <label class="smallmuted" for="avatarStyle">Avatar</label>
+          <select id="avatarStyle" class="select" aria-label="Avatar style">
+            <option value="normal">Circular</option>
+            <option value="shadow">Shadow</option>
+            <option value="frame">Frame</option>
+          </select>
         </div>
       </div>
     </div>
 
-    <!-- PROFILE / CARD -->
-    <div id="profile" class="profile-wrap" style="margin-top:18px;">
-      <div class="card" style="max-width:520px;">
-        <div class="profile-header">
-          <img id="avatar" class="avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop&s=placeholder" alt="Avatar" />
-          <div class="name" id="fullName">Vidyapogula Hanook</div>
-          <div class="title" id="title">Chief Executive Officer</div>
+    <!-- profile card area -->
+    <div id="profile" class="profile-grid">
+      <div class="card profile-card">
+        <div class="avatar-wrap">
+          <img id="avatar" class="avatar" src="" alt="avatar (click to change)"/>
         </div>
 
-        <div class="tabs" role="tablist" aria-label="Profile tabs">
-          <button class="tab-btn active" data-tab="contact">Contact Info</button>
-          <button class="tab-btn" data-tab="companies">Companies</button>
-          <button class="tab-btn" data-tab="qr">QR Code</button>
-        </div>
-
-        <div class="content">
-          <!-- Contact tab -->
-          <div id="contact" class="tab-panel">
-            <div class="section-title">Email Addresses</div>
-            <div class="email-list" id="emailList">
-              <!-- emails inserted by JS -->
-            </div>
-
-            <div class="divider"></div>
-
-            <div class="section-title">Phone</div>
-            <div class="phone">
-              <div class="email-icon">📞</div>
-              <div style="display:flex;flex-direction:column">
-                <div class="pnum" id="phoneNumber">+91 7702310750</div>
-                <div class="muted">Mobile</div>
-              </div>
-            </div>
-
-            <div class="small">Social</div>
-          </div>
-
-          <!-- Companies tab -->
-          <div id="companies" class="tab-panel" style="display:none">
-            <div class="section-title">Companies</div>
-            <div class="company-grid" id="companyGrid">
-              <!-- inserted by JS -->
-            </div>
-          </div>
-
-          <!-- QR tab -->
-          <div id="qr" class="tab-panel" style="display:none">
-            <div class="section-title">QR Code</div>
-            <div class="qr-placeholder">
-              <div>QR code / vCard will appear here</div>
-              <div style="margin-top:8px" class="muted">(Generate a QR that links to this page or a vCard)</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- right column: example company highlights -->
-      <div style="width:100%;max-width:340px;">
-        <div class="card">
+        <div style="padding-left:150px;padding-right:10px;">
           <div style="display:flex;align-items:center;justify-content:space-between">
             <div>
-              <div style="font-weight:800;font-size:18px">Profile Actions</div>
-              <div class="muted" style="margin-top:6px;font-size:13px">Quick actions for your profile</div>
-            </div>
-            <div style="text-align:right">
-              <button style="background:#f1f7ff;border:0;padding:8px 12px;border-radius:10px;font-weight:700;color:var(--accent)">Edit</button>
+              <div id="fullName" class="name">Vidyapogula Hanook</div>
+              <div id="title" class="title">Chief Executive Officer</div>
             </div>
           </div>
 
-          <div style="margin-top:16px">
-            <div class="section-title">Highlighted companies</div>
-            <div class="company-grid" style="grid-template-columns:1fr">
-              <div class="company" style="display:flex;gap:12px;align-items:center">
-                <div class="logo"><img src="https://via.placeholder.com/84x44?text=P" alt="Purra" style="height:40px;"/></div>
-                <div style="flex:1">
-                  <div class="name">Purra Technologies Ltd</div>
-                  <a href="#" onclick="return false">www.purra.ai</a>
-                </div>
-              </div>
+          <div class="tabs" role="tablist" aria-label="Profile tabs" style="margin-top:10px">
+            <button class="tab-btn active" data-tab="contact">Contact Info</button>
+            <button class="tab-btn" data-tab="companies">Companies</button>
+            <button class="tab-btn" data-tab="qr">QR Code</button>
+          </div>
 
-              <div class="company" style="display:flex;gap:12px;align-items:center">
-                <div class="logo"><img src="https://via.placeholder.com/84x44?text=B" alt="Bayin" style="height:40px;"/></div>
-                <div style="flex:1">
-                  <div class="name">Bay-In Sourcing Ltd</div>
-                  <a href="#" onclick="return false">www.bayin.co.il</a>
+          <div class="content">
+            <div id="contact" class="tab-panel">
+              <div class="section-title">Email Addresses</div>
+              <div class="email-list" id="emailList"></div>
+
+              <div style="height:12px"></div>
+              <div class="section-title">Phone</div>
+              <div class="phone">
+                <div class="email-icon">📞</div>
+                <div>
+                  <div id="phoneNumber" class="pnum">+91 7702310750</div>
+                  <div class="smallmuted">Mobile</div>
                 </div>
               </div>
             </div>
-          </div>
 
+            <div id="companies" class="tab-panel" style="display:none">
+              <div class="section-title">Companies</div>
+              <div id="companyGrid"></div>
+            </div>
+
+            <div id="qr" class="tab-panel" style="display:none">
+              <div class="section-title">QR Code</div>
+              <div style="padding:18px;border-radius:12px;background:rgba(0,0,0,0.03)" class="smallmuted">QR / vCard placeholder — ask me and I will add generation button.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card profile-right">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <div style="font-weight:800">Profile Actions</div>
+            <div class="smallmuted" style="margin-top:6px">Quick actions for your profile</div>
+          </div>
+          <div><button class="btn" id="editBtn">Edit</button></div>
+        </div>
+
+        <div style="margin-top:14px">
+          <div class="section-title">Highlighted companies</div>
+          <div id="highlightCompanies"></div>
         </div>
       </div>
     </div>
-
   </div>
 
   <script>
-    // Replace user data here. This is the only place you need to edit to customize.
+    /* === USER DATA (edit only here) === */
     const user = {
       name: "Vidyapogula Hanook",
       title: "Chief Executive Officer",
@@ -246,45 +188,40 @@
       ]
     };
 
-    // Populate UI
+    /* populate UI */
     document.getElementById('fullName').textContent = user.name;
     document.getElementById('title').textContent = user.title;
     document.getElementById('avatar').src = user.avatar;
     document.getElementById('phoneNumber').textContent = user.phone;
 
     const emailList = document.getElementById('emailList');
-    emailList.innerHTML = "";
     user.emails.forEach(e=>{
-      const node = document.createElement('div');
-      node.className = 'email-item';
-      node.innerHTML = `
-        <div class="email-icon">✉️</div>
+      const row = document.createElement('div'); row.className='email-item';
+      row.innerHTML = `<div class="email-icon">✉️</div>
         <div class="email-text">
           <a class="address" href="mailto:${e.address}">${e.address}</a>
-          <div class="meta">${e.company || ''}</div>
-        </div>
-      `;
-      emailList.appendChild(node);
+          <div class="meta">${e.company||''}</div>
+        </div>`;
+      emailList.appendChild(row);
     });
 
+    const highlightCompanies = document.getElementById('highlightCompanies');
     const companyGrid = document.getElementById('companyGrid');
-    companyGrid.innerHTML = "";
     user.companies.forEach(c=>{
-      const card = document.createElement('div');
-      card.className = 'company';
-      card.innerHTML = `
-        <div style="display:flex;gap:12px;align-items:center">
-          <div class="logo"><img src="${c.logo}" alt="${c.name}" style="max-height:64px;object-fit:contain"/></div>
-        </div>
-        <div style="margin-top:auto">
-          <div class="name">${c.name}</div>
-          <a href="${c.url}" target="_blank">${c.url.replace(/^https?:\/\//,'')}</a>
-        </div>
-      `;
-      companyGrid.appendChild(card);
+      const card = document.createElement('div'); card.className='company';
+      card.innerHTML = `<div style="display:flex;align-items:center;gap:12px">
+          <div style="width:64px"><img src="${c.logo}" alt="${c.name}" style="width:100%;object-fit:contain;border-radius:8px"/></div>
+          <div>
+            <div style="font-weight:700">${c.name}</div>
+            <a href="${c.url}" target="_blank" style="color:var(--accent)">${c.url.replace(/^https?:\/\//,'')}</a>
+          </div>
+        </div>`;
+      highlightCompanies.appendChild(card);
+      const comp = card.cloneNode(true);
+      companyGrid.appendChild(comp);
     });
 
-    // Simple tab switching
+    /* tab switching */
     document.querySelectorAll('.tab-btn').forEach(btn=>{
       btn.addEventListener('click', ()=>{
         document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
@@ -295,21 +232,42 @@
       });
     });
 
-    // small: make avatar clickable to upload local file (optional)
-    document.getElementById('avatar').addEventListener('click', ()=>{
-      const inp = document.createElement('input');
-      inp.type = 'file';
-      inp.accept = 'image/*';
+    /* theme switcher */
+    const themeSelector = document.getElementById('theme');
+    themeSelector.value = 'theme-luxury';
+    themeSelector.addEventListener('change', e=>{
+      document.body.className = e.target.value;
+    });
+
+    /* avatar style switcher */
+    const avatarStyle = document.getElementById('avatarStyle');
+    const avatarEl = document.getElementById('avatar');
+    avatarStyle.addEventListener('change', ()=>{
+      avatarEl.classList.remove('shadow','frame');
+      const v = avatarStyle.value;
+      if(v==='shadow') avatarEl.classList.add('shadow');
+      if(v==='frame') avatarEl.classList.add('frame');
+    });
+
+    /* avatar click -> change image quickly (client-side) */
+    avatarEl.addEventListener('click', ()=>{
+      const inp = document.createElement('input'); inp.type='file'; inp.accept='image/*';
       inp.onchange = e=>{
-        const f = e.target.files[0];
-        if(!f) return;
-        const reader = new FileReader();
-        reader.onload = ev=>{
-          document.getElementById('avatar').src = ev.target.result;
-        };
-        reader.readAsDataURL(f);
+        const f = e.target.files[0]; if(!f) return;
+        const r = new FileReader();
+        r.onload = ev => avatarEl.src = ev.target.result;
+        r.readAsDataURL(f);
       };
       inp.click();
+    });
+
+    /* edit button - quick inline editing for name & title */
+    document.getElementById('editBtn').addEventListener('click', ()=>{
+      const newName = prompt('Name:', user.name);
+      const newTitle = prompt('Title:', user.title);
+      if(newName) { user.name = newName; document.getElementById('fullName').textContent = newName; }
+      if(newTitle) { user.title = newTitle; document.getElementById('title').textContent = newTitle; }
+      // if you want, we can save to github automatically with API (advanced)
     });
   </script>
 </body>
