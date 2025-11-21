@@ -613,16 +613,6 @@
         btn.style.transform = 'rotate(20deg)';
       }
     }
-
-    function sendChatMail(){
-      const name = document.getElementById('chatName').value.trim();
-      const email = document.getElementById('chatEmail').value.trim();
-      const phone = document.getElementById('chatPhone').value.trim();
-      const msg = document.getElementById('chatMsg').value.trim();
-      if(!name || !email || !msg){
-        alert('Please enter name, email and message.');
-        return;
-      }
       const subject = encodeURIComponent(CHAT_SUBJECT + ' — ' + (name || ''));
       const body = encodeURIComponent(
         'Name: ' + name + '\n' +
