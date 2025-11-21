@@ -662,54 +662,5 @@
   /* make product images visible if broken */
   .product-img { background: #f4f7fb; min-height:180px; object-fit:cover; }
 </style>
-
-<script>
-(function(){
-  try {
-    // 1) Force-show the chat window and button (debug)
-    var w = document.getElementById('chatWindow');
-    var btn = document.getElementById('chatBtn');
-    if(w){ 
-      w.style.display = 'flex';
-      w.style.bottom = '95px';
-      w.style.right = '16px';
-      w.style.zIndex = '999999';
-      w.style.border = '1px solid rgba(15,95,180,0.12)';
-    }
-    if(btn){
-      btn.style.display = 'block';
-      btn.style.zIndex = '999999';
-    }
-
-    // 2) Replace any empty or broken product images with a fallback
-    var fallback = 'https://images.unsplash.com/photo-1555685812-4b943f1ee833?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=9a6d1b2a4b8b2b53b7b0d7f9c7f6b0c8';
-    document.querySelectorAll('.product-img').forEach(function(img){
-      // If img has no src or src is blank or failed to load, set fallback
-      if(!img.getAttribute('src') || img.getAttribute('src').trim()===''){
-        img.src = fallback;
-      }
-      // also attach error handler if the image URL fails to load
-      img.onerror = function(){ this.onerror=null; this.src = fallback; };
-    });
-
-    // 3) Small on-screen debug note so you know this code ran
-    var dbg = document.createElement('div');
-    dbg.textContent = 'DEBUG: chat shown + image fallback active (remove this block when fixed)';
-    dbg.style.position = 'fixed';
-    dbg.style.left = '10px';
-    dbg.style.bottom = '10px';
-    dbg.style.background = '#fff';
-    dbg.style.padding = '8px 12px';
-    dbg.style.borderRadius = '8px';
-    dbg.style.boxShadow = '0 6px 18px rgba(0,0,0,0.12)';
-    dbg.style.fontSize = '12px';
-    dbg.style.zIndex = '999999';
-    document.body.appendChild(dbg);
-  } catch(e){
-    console.warn('debug helper failed', e);
-  }
-})();
-</script>
-<!-- end debug helper -->
 </body>
 </html>
