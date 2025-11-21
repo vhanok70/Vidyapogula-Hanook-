@@ -4,31 +4,26 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Hanook Global Traders — Merchant Exporter</title>
-  <meta name="description" content="Hanook Global Traders — Merchant Exporter of Aluminium Ingots (A7), Copper Cathodes and Aluminium Billets. Bridging India with global markets." />
+  <meta name="description" content="Hanook Global Traders — Merchant Exporter of Aluminium Ingots (A7), Copper Cathodes and Aluminium Billets." />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#f4f7fb;
-      --text:#0b1220;
-      --muted:#6b7280;
-      --accent:#0f5fb4;
-      --accent-2:#0077ff;
-      --card:#ffffff;
-      --radius:16px;
-      --shadow-lg:0 30px 60px rgba(12,20,40,0.18);
+      --bg:#f4f7fb; --text:#0b1220; --muted:#6b7280;
+      --accent:#0f5fb4; --accent-2:#0077ff; --card:#fff;
+      --radius:16px; --shadow-lg:0 30px 60px rgba(12,20,40,0.18);
       --shadow-sm:0 10px 26px rgba(12,20,40,0.10);
       --container:1180px;
-      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
     }
     *{box-sizing:border-box;margin:0;padding:0}
     html,body{height:100%;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
     a{color:inherit;text-decoration:none}
-    .wrap{max-width:var(--container);margin:0 auto;padding:18px 16px 32px;}
+    .wrap{max-width:var(--container);margin:0 auto;padding:18px 16px 48px;}
 
-    /* HEADER */
+    /* header */
     header{display:flex;align-items:center;justify-content:space-between;padding:8px 0 10px}
     .brand{display:flex;align-items:center;gap:10px}
-    .brand-logo{width:46px;height:46px;border-radius:999px;background:#ffffff;display:grid;place-items:center;box-shadow:0 4px 12px rgba(15,23,42,0.12);font-weight:800;color:var(--accent)}
+    .brand-logo{width:46px;height:46px;border-radius:999px;background:#fff;display:grid;place-items:center;box-shadow:0 4px 12px rgba(15,23,42,0.12);font-weight:800;color:var(--accent)}
     .brand-title{font-weight:800;font-size:18px}
     .brand-sub{font-size:12px;color:var(--muted)}
     .nav-actions{display:flex;align-items:center;gap:10px}
@@ -37,201 +32,84 @@
     .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 8px 22px rgba(15,96,188,0.35)}
     .btn-outline{background:transparent;border:1px solid rgba(15,23,42,0.08);color:var(--text)}
 
-    /* HERO */
-    .hero-shell{
-      position:relative;
-      border-radius:0 0 40px 40px;
-      overflow:hidden;
-      box-shadow:var(--shadow-lg);
-      background:#000;
-      margin-top:6px;
-    }
-    .hero{
-      position:relative;
-      min-height:380px;
-      display:flex;
-      align-items:flex-end;
-      padding:40px 5% 60px;
-      color:#fff;
-      isolation:isolate;
-    }
-    .hero-bg{
-      position:absolute;
-      inset:0;
-      background-image:
-        linear-gradient(140deg,rgba(2,18,46,0.88),rgba(15,94,178,0.55),rgba(0,110,180,0.7)),
-        url("https://images.unsplash.com/photo-1473445730015-841f29a9490b?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=1c3e88db52e56ce868f5f4c8b93a9f2f");
-      background-size:cover;
-      background-position:center;
-      z-index:-2;
-      filter:saturate(1.05);
-    }
-    .hero-wave{
-      position:absolute;
-      bottom:-1px;left:0;right:0;
-      height:110px;
-      background:radial-gradient(120% 120% at 50% -20%,rgba(255,255,255,0.96),transparent 60%);
-      z-index:-1;
-    }
-    .hero-left{max-width:520px}
-    .hero-kicker{font-size:12px;letter-spacing:0.18em;font-weight:700;text-transform:uppercase;opacity:0.92}
+    /* hero */
+    .hero-shell{position:relative;border-radius:0 0 40px 40px;overflow:hidden;box-shadow:var(--shadow-lg);margin-top:6px}
+    .hero{position:relative;min-height:380px;display:flex;align-items:flex-end;padding:40px 6% 60px;color:#fff;isolation:isolate}
+    .hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:-2;filter:saturate(1.05)}
+    .hero-left{max-width:540px}
+    .hero-kicker{font-size:12px;letter-spacing:0.18em;font-weight:700;text-transform:uppercase;opacity:0.94}
     .hero-title{font-size:34px;line-height:1.02;font-weight:800;margin-top:8px}
-    .hero-sub{margin-top:10px;font-size:14px;opacity:0.92;max-width:60ch}
+    .hero-sub{margin-top:10px;font-size:14px;opacity:0.95;max-width:60ch}
     .hero-cta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
-    .hero-cta .btn-primary{padding-inline:18px}
-    .hero-cta .btn-outline{color:#e5edff;border-color:rgba(255,255,255,0.5);background:rgba(7,28,66,0.45)}
-    .hero-badges{display:flex;gap:10px;margin-top:18px;font-size:11px;opacity:0.9;flex-wrap:wrap}
-    .badge{padding:6px 10px;border-radius:999px;background:rgba(3,16,46,0.7);border:1px solid rgba(255,255,255,0.08)}
+    .hero-badges{display:flex;gap:10px;margin-top:18px;font-size:11px;opacity:0.95;flex-wrap:wrap}
+    .badge{padding:6px 10px;border-radius:999px;background:rgba(3,16,46,0.55);border:1px solid rgba(255,255,255,0.08)}
 
-    /* FEATURE CARDS */
-    .features-wrap{
-      margin-top:-60px;
-      padding:0 10px;
-    }
-    .features-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:14px;
-    }
+    /* features */
+    .features-wrap{margin-top:-60px;padding:0 10px}
+    .features-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
     @media (max-width:900px){ .features-grid{grid-template-columns:repeat(2,1fr)} }
     @media (max-width:560px){ .features-grid{grid-template-columns:1fr} }
-
-    .feature{
-      background:var(--card);
-      border-radius:18px;
-      padding:18px 14px;
-      box-shadow:var(--shadow-sm);
-      text-align:left;
-    }
-    .feature-icon{
-      width:40px;height:40px;border-radius:12px;background:#f3f5ff;
-      display:grid;place-items:center;font-size:20px;margin-bottom:8px;
-    }
+    .feature{background:var(--card);border-radius:18px;padding:18px 14px;box-shadow:var(--shadow-sm);text-align:left}
+    .feature-icon{width:40px;height:40px;border-radius:12px;background:#f3f5ff;display:grid;place-items:center;font-size:20px;margin-bottom:8px}
     .feature-title{font-weight:800;font-size:14px;margin-bottom:4px}
     .feature-text{font-size:13px;color:var(--muted);line-height:1.5}
 
-    /* MAIN CONTENT */
+    /* main */
     main{margin-top:26px}
-
-    .section-head{
-      display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:16px;
-    }
+    .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:16px}
     .section-head h2{font-size:20px;font-weight:800}
     .section-head p{font-size:13px;color:var(--muted);max-width:420px}
 
-    /* ABOUT */
-    .about-grid{display:grid;grid-template-columns:1.7fr 1.1fr;gap:20px}
-    @media (max-width:900px){ .about-grid{grid-template-columns:1fr} }
+    /* about + offerings */
+    .about-section{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;padding:40px 0}
+    .about-image{flex:1;min-width:280px}
+    .about-image img{width:100%;border-radius:12px;box-shadow:0 8px 30px rgba(3,16,46,0.08)}
+    .about-content{flex:1;min-width:320px}
+    .about-content h4{color:var(--accent);font-weight:700}
+    .about-content h2{font-size:28px;margin-top:6px}
+    .about-content p{margin-top:12px;color:var(--muted);line-height:1.6}
 
-    .card{background:var(--card);border-radius:18px;padding:18px;box-shadow:var(--shadow-sm)}
-    .about-text{font-size:14px;color:var(--muted);line-height:1.7}
-    .about-text strong{color:var(--text)}
+    .offer-grid{display:flex;gap:20px;flex-wrap:wrap;margin-top:20px}
+    .offer-card{background:#fff;padding:22px;border-radius:12px;box-shadow:var(--shadow-sm);width:320px}
 
-    .caps{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}
-    @media (max-width:600px){ .caps{grid-template-columns:1fr} }
-    .cap{background:#f6f8ff;border-radius:12px;padding:10px 12px;font-size:13px}
-    .cap-heading{font-weight:700;margin-bottom:4px;font-size:13px}
-
-    .counters{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
-    .counter{flex:1;min-width:130px;padding:12px;border-radius:14px;background:linear-gradient(180deg,#ffffff,#f5f7ff);box-shadow:var(--shadow-sm);text-align:center}
-    .counter .num{font-size:20px;font-weight:800;color:var(--accent)}
-    .counter .label{font-size:12px;color:var(--muted);margin-top:4px}
-
-    .about-side .row{margin-bottom:10px}
-    .about-side .label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.12em}
-    .about-side .val{font-weight:700;margin-top:2px}
-    .badge-outline{display:inline-block;margin-top:8px;padding:6px 10px;border-radius:999px;border:1px solid rgba(15,23,42,0.12);font-size:12px;color:var(--muted)}
-
-    .cert-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-    .cert{background:#fff;border-radius:12px;padding:10px 14px;font-size:12px;box-shadow:var(--shadow-sm);min-width:110px;text-align:center}
-
-    /* PRODUCTS */
-    .products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    /* products */
+    .products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
     @media (max-width:900px){ .products-grid{grid-template-columns:repeat(2,1fr)} }
     @media (max-width:600px){ .products-grid{grid-template-columns:1fr} }
-
-    .product{background:var(--card);border-radius:18px;box-shadow:var(--shadow-sm);overflow:hidden;display:flex;flex-direction:column;transition:transform .24s,box-shadow .24s}
+    .product{background:var(--card);border-radius:18px;box-shadow:var(--shadow-sm);overflow:hidden;display:flex;flex-direction:column;transition:transform .24s}
     .product:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
-    .product-img{width:100%;height:210px;object-fit:cover;display:block}
-    .product-body{padding:14px 14px 16px;display:flex;flex-direction:column;gap:8px;flex:1}
+    .product-img{width:100%;height:200px;object-fit:cover;display:block}
+    .product-body{padding:14px 14px 16px;display:flex;flex-direction:column;gap:8px}
     .p-title{font-weight:800;font-size:15px}
     .p-sub{font-size:13px;color:var(--muted)}
-    .meta-row{display:flex;align-items:center;justify-content:space-between;margin-top:6px;font-size:12px}
     .pill{padding:6px 9px;border-radius:999px;background:#f3f5ff;color:var(--accent);font-weight:600}
 
-    /* CONTACT */
-    .contact-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:18px}
+    /* contact */
+    .contact-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:18px;margin-top:28px}
     @media (max-width:900px){ .contact-grid{grid-template-columns:1fr} }
-
+    .card{background:var(--card);border-radius:18px;padding:18px;box-shadow:var(--shadow-sm)}
     .field{display:flex;flex-direction:column;margin-bottom:10px;font-size:13px}
     .field label{margin-bottom:4px;color:var(--muted)}
     .field input,.field textarea{padding:10px;border-radius:12px;border:1px solid #dde4f1;font-size:13px;outline:none}
     .field textarea{min-height:120px;resize:vertical}
-
-    .contact-card .row{margin-bottom:10px}
-    .contact-card .row .label{font-size:12px;color:var(--muted)}
-    .contact-card .row .val{font-weight:700;margin-top:2px}
     .whatsapp-btn{display:inline-flex;align-items:center;gap:6px;background:#25D366;color:white;padding:9px 12px;border-radius:999px;font-size:13px;font-weight:800}
 
-    /* floating contact bar (right side) */
-    .float-contact{
-      position:fixed;
-      right:14px;
-      bottom:18px;
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-      z-index:40;
-    }
-    .float-btn{
-      width:42px;height:42px;border-radius:999px;
-      display:grid;place-items:center;
-      box-shadow:0 12px 26px rgba(0,0,0,0.18);
-      background:#25D366;color:white;font-size:22px;
-    }
-    .float-btn.email{background:var(--accent)}
-    .float-btn.top{background:#111827;font-size:18px}
+    footer{margin-top:26px;text-align:center;font-size:12px;color:var(--muted);padding:18px 0}
 
-    footer{margin-top:26px;text-align:center;font-size:12px;color:var(--muted);padding-top:8px}
-
-    @media (max-width:720px){
-      .hero{min-height:320px;padding:30px 18px 70px}
-      .hero-title{font-size:26px}
-    }
-
-    /* ====== Chat widget CSS (floating chat) ====== */
-    .chat-float {
-      position: fixed;
-      right: 16px;
-      bottom: 18px;
-      z-index: 99999;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-    }
-    .chat-button {
-      width:56px; height:56px; border-radius:50%;
-      background: linear-gradient(90deg,#0f5fb4,#0077ff);
-      color:#fff; display:grid; place-items:center; font-size:24px;
-      box-shadow:0 14px 30px rgba(3,16,46,0.28); cursor:pointer; border:0;
-    }
-    .chat-window{
-      width:320px; max-width:92vw; display:none; flex-direction:column;
-      background:#fff; border-radius:14px; box-shadow:0 20px 40px rgba(3,16,46,0.18);
-      overflow:hidden; margin-bottom:10px;
-    }
-    .chat-header{
-      background:linear-gradient(90deg,#0f5fb4,#0077ff); color:#fff; padding:12px 14px; display:flex; align-items:center; justify-content:space-between;
-    }
-    .chat-header .title{font-weight:700;font-size:14px}
-    .chat-body{padding:12px; display:flex; flex-direction:column; gap:8px}
-    .chat-body input, .chat-body textarea{width:100%; padding:10px; border-radius:8px; border:1px solid #e6edf8; font-size:14px; outline:none}
-    .chat-footer{display:flex; gap:8px; padding:12px; align-items:center; justify-content:space-between}
+    /* floating chat */
+    .chat-float{position:fixed;right:16px;bottom:18px;z-index:99999;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial}
+    .chat-button{width:56px;height:56px;border-radius:50%;background:linear-gradient(90deg,#0f5fb4,#0077ff);color:#fff;display:grid;place-items:center;font-size:24px;box-shadow:0 14px 30px rgba(3,16,46,0.28);cursor:pointer;border:0}
+    .chat-window{width:320px;max-width:92vw;display:none;flex-direction:column;background:#fff;border-radius:14px;box-shadow:0 20px 40px rgba(3,16,46,0.18);overflow:hidden;margin-bottom:10px}
+    .chat-header{background:linear-gradient(90deg,#0f5fb4,#0077ff);color:#fff;padding:12px 14px;display:flex;align-items:center;justify-content:space-between}
+    .chat-body{padding:12px;display:flex;flex-direction:column;gap:8px}
+    .chat-body input, .chat-body textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6edf8;font-size:14px;outline:none}
+    .chat-footer{display:flex;gap:8px;padding:12px;align-items:center;justify-content:space-between}
     .chat-send{background:#0f5fb4;color:#fff;border:0;padding:9px 12px;border-radius:10px;font-weight:700;cursor:pointer}
     .chat-whatsapp{background:#25D366;color:#fff;border:0;padding:9px 10px;border-radius:10px;font-weight:700;cursor:pointer}
     .chat-small{font-size:12px;color:#64748b}
     @media (min-width:900px){ .chat-window{width:360px} }
   </style>
 </head>
-
 <body>
   <div class="wrap">
     <!-- HEADER -->
@@ -243,6 +121,7 @@
           <div class="brand-sub" id="companyTagline">Merchant exporter of metals & minerals</div>
         </div>
       </div>
+
       <div class="nav-actions">
         <div class="chip">Kurnool, India</div>
         <button class="btn btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</button>
@@ -250,10 +129,10 @@
       </div>
     </header>
 
-    <!-- HERO with ship background -->
+    <!-- HERO -->
     <div class="hero-shell">
-      <div class="hero-bg"></div>
-      <div class="hero" style="background-image: url('file_00000000727c72089d26611814714d1e (1).png'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 380px; border-radius: 18px;">
+      <div id="heroBg" class="hero-bg" style="background-image: url('assets/ship.jpg');"></div>
+      <div class="hero">
         <div class="hero-left">
           <div class="hero-kicker">Bridging India With Global Markets</div>
           <div class="hero-title">Merchant Exporter</div>
@@ -264,7 +143,7 @@
 
           <div class="hero-cta">
             <a id="heroReadMore" class="btn btn-primary" href="#about">Read More</a>
-            <a id="heroQuote" class="btn btn-outline" href="mailto:info@hanookexports.com?subject=Sales%20Enquiry">Request Quote</a>
+            <a id="heroQuote" class="btn btn-outline" href="mailto:info@hanookglobaltraders.com?subject=Sales%20Enquiry">Request Quote</a>
           </div>
 
           <div class="hero-badges">
@@ -274,264 +153,96 @@
           </div>
         </div>
       </div>
-      <div class="hero-wave"></div>
+      <div style="height:90px;background:radial-gradient(120% 120% at 50% -20%,rgba(255,255,255,0.96),transparent 60%);"></div>
     </div>
 
-    <!-- FEATURE CARDS -->
+    <!-- FEATURES -->
     <div class="features-wrap">
       <div class="features-grid">
         <div class="feature">
           <div class="feature-icon">🏅</div>
           <div class="feature-title">Recognition & Compliance</div>
-          <div class="feature-text">
-            Govt. registered merchant trader; IEC & DGFT-compliant documentation for smooth global trade.
-          </div>
+          <div class="feature-text">Govt. registered merchant trader; IEC & DGFT-compliant documentation for smooth global trade.</div>
         </div>
         <div class="feature">
           <div class="feature-icon">✅</div>
           <div class="feature-title">Quality & Reliability</div>
-          <div class="feature-text">
-            Mill Test Certificates (MTC) provided on request, third-party inspection (SGS / Intertek) available.
-          </div>
+          <div class="feature-text">Mill Test Certificates (MTC) provided on request, third-party inspection (SGS / Intertek) available.</div>
         </div>
         <div class="feature">
           <div class="feature-icon">🚢</div>
           <div class="feature-title">0 Hassle Logistics</div>
-          <div class="feature-text">
-            Containerized & bulk shipments, custom packaging and on-time deliveries through trusted freight partners.
-          </div>
+          <div class="feature-text">Containerized & bulk shipments, custom packaging and on-time deliveries through trusted freight partners.</div>
         </div>
         <div class="feature">
           <div class="feature-icon">🌍</div>
           <div class="feature-title">Global Trade Expertise</div>
-          <div class="feature-text">
-            Export solutions for Asia, Middle East, Europe and Africa with competitive pricing structures.
-          </div>
+          <div class="feature-text">Export solutions for Asia, Middle East, Europe and Africa with competitive pricing structures.</div>
         </div>
       </div>
     </div>
 
     <main>
-      <!-- ABOUT -->
-      <section id="about" style="margin-top:28px;">
-        <div class="section-head">
-          
-          <h2>Who We Are</h2>
-          <!-- ABOUT SECTION (AllureMerx style) -->
-<section style="padding:60px 0; background:#ffffff;">
-   <div style="max-width:1200px; margin:auto; display:flex; flex-wrap:wrap; align-items:center; gap:40px;">
-
-      <!-- Left Image -->
-      <div style="flex:1; min-width:300px;">
-         <img src="YOUR-IMAGE-LINK-HERE" 
-              style="width:100%; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.15);" />
-      </div>
-
-      <!-- Right Content -->
-      <div style="flex:1; min-width:300px;">
-         <h4 style="color:#0057ff; font-weight:600;">WHO IS HANOOK GLOBAL TRADERS</h4>
-         <h2 style="font-size:28px; font-weight:700; margin-top:10px;">
-            Your Trusted Partner for Quality Exports
-         </h2>
-
-         <p style="margin-top:15px; line-height:1.6; font-size:16px;">
-            Hanook Global Traders connects India with global markets through transparent pricing, 
-            verified suppliers and reliable shipment processes. As a merchant exporter, we supply 
-            Aluminium Ingots (A7), Copper Cathodes and Aluminium Billets with complete documentation 
-            and end-to-end logistics.
-         </p>
-
-         <p style="margin-top:10px; line-height:1.6; font-size:16px;">
-            From sourcing to shipment, we offer seamless logistics, quality inspection, 
-            SGS/MTC certification and flexible CIF/FOB/EXW terms based on buyer requirements.
-         </p>
-
-         <a href="#contact" 
-            style="display:inline-block; margin-top:20px; background:#0057ff; color:#fff; 
-                   padding:12px 22px; border-radius:6px; text-decoration:none; font-size:16px;">
-            Learn More About Us
-         </a>
-      </div>
-
-   </div>
-</section>
-
-
-<!-- KEY OFFERINGS SECTION -->
-<section style="padding:60px 0; background:#f8faff;">
-   <div style="max-width:1200px; margin:auto; text-align:center;">
-      <h4 style="color:#0057ff; font-weight:600;">OUR SERVICES</h4>
-      <h2 style="font-size:28px; font-weight:700; margin-top:10px;">Key Offerings</h2>
-
-      <div style="margin-top:40px; display:flex; flex-wrap:wrap; justify-content:center; gap:30px;">
-
-         <!-- Card 1 -->
-         <div style="width:320px; background:#fff; padding:25px; 
-                     border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,0.07);">
-            <div style="font-size:40px;">📦</div>
-            <h3 style="margin-top:10px; font-size:20px; font-weight:700;">
-               Product Sourcing & Procurement
-            </h3>
-            <p style="margin-top:10px; font-size:15px; line-height:1.5;">
-               Identifying and supplying top-tier Indian products with trusted manufacturers.
-            </p>
-         </div>
-
-         <!-- Card 2 -->
-         <div style="width:320px; background:#fff; padding:25px; 
-                     border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,0.07);">
-            <div style="font-size:40px;">🏆</div>
-            <h3 style="margin-top:10px; font-size:20px; font-weight:700;">
-               Quality Control & Assurance
-            </h3>
-            <p style="margin-top:10px; font-size:15px; line-height:1.5;">
-               Stringent quality checks and international inspection standards.
-            </p>
-         </div>
-
-      </div>
-   </div>
-</section>
-          <p>Hanook Global Traders connects Indian producers and recyclers of non-ferrous metals with serious global buyers through transparent pricing and reliable logistics.</p>
+      <!-- ABOUT + OFFERS -->
+      <section id="about" class="about-section">
+        <div class="about-image">
+          <!-- replace path with your uploaded image in assets/ -->
+          <img src="assets/ingots-a7.jpg" alt="Aluminium Ingots A7">
         </div>
 
-        <div class="about-grid">
-          <div class="card">
-            <div class="about-text">
-              India is rapidly strengthening its position in global metal supply. At <strong>Hanook Global Traders</strong>, we partner with this growth by acting as a trusted merchant exporter for <strong>Aluminium Ingots (A7)</strong>, <strong>Copper Cathodes</strong> and <strong>Aluminium Billets</strong>.
-              <br><br>
-              Our focus is simple: <strong>genuine material, clear communication and on-time shipments</strong>. From RFQ to shipment, we coordinate sourcing, quality checks, documentation and logistics so buyers can focus on their operations.
+        <div class="about-content">
+          <h4>WHO IS HANOOK GLOBAL TRADERS</h4>
+          <h2>Your Trusted Partner for Quality Exports</h2>
+          <p>Hanook Global Traders connects India with global markets through transparent pricing, verified suppliers and reliable shipment processes. We supply Aluminium Ingots (A7), Copper Cathodes and Aluminium Billets with complete documentation and end-to-end logistics.</p>
+
+          <div class="offer-grid">
+            <div class="offer-card">
+              <div style="font-size:34px;">📦</div>
+              <h3 style="margin-top:8px;">Product Sourcing & Procurement</h3>
+              <p style="color:var(--muted);margin-top:8px;">Identifying and supplying top-tier Indian products with trusted manufacturers.</p>
             </div>
 
-            <div class="caps">
-              <div class="cap">
-                <div class="cap-heading">Documentation</div>
-                <div>PI, Commercial Invoice, Packing List, MTC, Certificate of Origin, B/L and insurance (for CIF).</div>
-              </div>
-              <div class="cap">
-                <div class="cap-heading">Logistics</div>
-                <div>CIF / FOB / EXW Incoterms, major ports in India & Asia, flexible shipment schedules.</div>
-              </div>
-              <div class="cap">
-                <div class="cap-heading">Quality Control</div>
-                <div>Pre-shipment inspection, sampling & third-party testing available for serious buyers.</div>
-              </div>
-              <div class="cap">
-                <div class="cap-heading">Relationship</div>
-                <div>Long-term supply contracts with transparent cost breakdown and support.</div>
-              </div>
-            </div>
-
-            <div class="counters" aria-hidden="true">
-              <div class="counter">
-                <div class="num" data-target="6000">0</div>
-                <div class="label">MT Export Potential</div>
-              </div>
-              <div class="counter">
-                <div class="num" data-target="120">0</div>
-                <div class="label">Active Leads & Buyers</div>
-              </div>
-              <div class="counter">
-                <div class="num" data-target="950">0</div>
-                <div class="label">Suppliers in Network</div>
-              </div>
-              <div class="counter">
-                <div class="num" data-target="3">0</div>
-                <div class="label">Years of Learning</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="about-side card">
-            <div class="row">
-              <div class="label">Registered Name</div>
-              <div class="val">Hanook Global Traders</div>
-            </div>
-            <div class="row">
-              <div class="label">Location</div>
-              <div class="val">Kurnool, Andhra Pradesh, India</div>
-            </div>
-            <div class="row">
-              <div class="label">Primary Products</div>
-              <div class="val">Aluminium Ingots (A7), Copper Cathodes, Aluminium Billets</div>
-            </div>
-            <div class="row">
-              <div class="label">Trade Terms</div>
-              <div class="val">CIF / FOB / EXW — subject to contract</div>
-            </div>
-            <span class="badge-outline">Soft Corporate Offer (SCO) upon verified enquiry</span>
-
-            <div style="margin-top:16px">
-              <div class="label">Recognitions & Compliance</div>
-              <div class="cert-row">
-                <div class="cert">IEC / DGFT</div>
-                <div class="cert">SGS / Intertek<br>Inspection</div>
-                <div class="cert">ISO-oriented<br>Processes</div>
-              </div>
+            <div class="offer-card">
+              <div style="font-size:34px;">🏆</div>
+              <h3 style="margin-top:8px;">Quality Control & Assurance</h3>
+              <p style="color:var(--muted);margin-top:8px;">Stringent quality checks and international inspection standards.</p>
             </div>
           </div>
         </div>
       </section>
 
       <!-- PRODUCTS -->
-      <section style="margin-top:30px;">
+      <section style="margin-top:10px;">
         <div class="section-head">
           <h2>Key Products</h2>
           <p>Metals we currently focus on. Detailed specification sheets and SCOs are shared once buyer details are verified.</p>
         </div>
 
         <div class="products-grid">
-          <!-- Aluminium Ingots -->
           <article class="product">
-            <img class="product-img" src="IMG_20251121_122611.png" alt="Aluminium ingots">
+            <img src="assets/ingots-a7.jpg" alt="Aluminium Ingots A7" class="product-img">
             <div class="product-body">
-              <div>
-                <div class="p-title">Aluminium Ingots (A7)</div>
-                <div class="p-sub">
-                  99.70% purity, A7 grade ingots for extrusion and casting applications.
-                  Mill Test Certificate (MTC) and third-party inspection on request.
-                </div>
-              </div>
-              <div class="meta-row">
-                <span class="pill">MOQ: 2500 MT</span>
-                <span class="muted">CIF / FOB / EXW</span>
-              </div>
+              <div class="p-title">Aluminium Ingots (A7)</div>
+              <div class="p-sub">99.70% purity, A7 grade ingots for extrusion and casting. MTC and third-party inspection on request.</div>
+              <div class="meta-row"><span class="pill">MOQ: 2500 MT</span><span style="color:var(--muted);font-size:13px">CIF / FOB / EXW</span></div>
             </div>
           </article>
 
-          <!-- Copper Cathodes -->
           <article class="product">
-            <img class="product-img" src="https://images.unsplash.com/photo-1581091870622-3c7f1a97f9c1?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=ed2fbd2f43b3b8a5a4c7f6e8b3e4fa1c" alt="Copper cathodes">
+            <img src="assets/copper-cathode.jpg" alt="Copper Cathodes" class="product-img">
             <div class="product-body">
-              <div>
-                <div class="p-title">Copper Cathodes</div>
-                <div class="p-sub">
-                  High-grade copper cathodes for smelting and manufacturing.
-                  Supplier COA shared; inspection and assay options available.
-                </div>
-              </div>
-              <div class="meta-row">
-                <span class="pill">MOQ: 1500 MT</span>
-                <span class="muted">CIF / FOB</span>
-              </div>
+              <div class="p-title">Copper Cathodes</div>
+              <div class="p-sub">High-grade copper cathodes for smelting and manufacturing. COA and inspection on request.</div>
+              <div class="meta-row"><span class="pill">MOQ: 1500 MT</span><span style="color:var(--muted);font-size:13px">CIF / FOB</span></div>
             </div>
           </article>
 
-          <!-- Aluminium Billets -->
           <article class="product">
-            <img class="product-img" src="https://images.unsplash.com/photo-1598551282739-3b33f0b9c5d1?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=ac2d5ed6f7c1b8a6b7c9d0e8f9a2b3c4" alt="Aluminium billets">
+            <img src="assets/aluminium-billets.jpg" alt="Aluminium Billets" class="product-img">
             <div class="product-body">
-              <div>
-                <div class="p-title">Aluminium Billets</div>
-                <div class="p-sub">
-                  Extrusion-grade billets with custom diameters and lengths.
-                  Suitable for downstream manufacturers and extrusion plants.
-                </div>
-              </div>
-              <div class="meta-row">
-                <span class="pill">MOQ: Notified MT</span>
-                <span class="muted">CIF / FOB / EXW</span>
-              </div>
+              <div class="p-title">Aluminium Billets</div>
+              <div class="p-sub">Extrusion-grade billets with custom diameters and lengths suitable for downstream manufacturers.</div>
+              <div class="meta-row"><span class="pill">MOQ: Notified MT</span><span style="color:var(--muted);font-size:13px">CIF / FOB / EXW</span></div>
             </div>
           </article>
         </div>
@@ -539,173 +250,110 @@
 
       <!-- CONTACT -->
       <section id="contact" style="margin-top:32px;">
-        <div class="section-head">
-          <h2>Contact & Enquiries</h2>
-          <p>Share your requirement with destination port, target quantity and preferred payment terms. We respond quickly for genuine enquiries.</p>
-        </div>
+        <div class="section-head"><h2>Contact & Enquiries</h2><p>Share your requirement with destination port, target quantity and preferred payment terms.</p></div>
 
         <div class="contact-grid">
           <div class="card">
             <form id="enquiryForm" onsubmit="sendMail(event)">
-              <div class="field">
-                <label>Your Name</label>
-                <input id="fName" required>
-              </div>
-              <div class="field">
-                <label>Email</label>
-                <input id="fEmail" type="email" required>
-              </div>
-              <div class="field">
-                <label>Phone / WhatsApp</label>
-                <input id="fPhone" required>
-              </div>
-              <div class="field">
-                <label>Product & Requirement</label>
-                <textarea id="fMsg" placeholder="Example: Aluminium A7, 50000 MT per month, CIF, LC at sight" required></textarea>
-              </div>
-              <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:6px">
+              <div class="field"><label>Your Name</label><input id="name" required></div>
+              <div class="field"><label>Email</label><input id="email" type="email" required></div>
+              <div class="field"><label>Phone / WhatsApp</label><input id="phone"></div>
+              <div class="field"><label>Product & Requirement</label><textarea id="message" placeholder="Example: Aluminium A7, 50000 MT per month, CIF Shanghai"></textarea></div>
+              <div style="display:flex;gap:10px;align-items:center">
                 <button type="submit" class="btn btn-primary">Send Enquiry</button>
-                <a class="btn btn-outline" href="mailto:info@hanookexports.com">Email Direct</a>
-              </div>
-              <div class="small-muted" style="margin-top:8px;font-size:11px;color:var(--muted);">
-                Note: Soft Corporate Offer (SCO) and detailed specs are shared only after initial buyer verification.
+                <a class="btn btn-outline" id="emailDirect" href="mailto:info@hanookglobaltraders.com?subject=Website%20Enquiry">Email Direct</a>
               </div>
             </form>
           </div>
 
-          <div class="card contact-card">
-            <div class="row">
-              <div class="label">Sales & Export</div>
-              <div class="val">Hanook Global Traders</div>
-            </div>
-            <div class="row">
-              <div class="label">Location</div>
-              <div class="val">Kurnool, Andhra Pradesh, India</div>
-            </div>
-            <div class="row">
-              <div class="label">Phone / WhatsApp</div>
-              <div class="val"><a id="cPhone" href="tel:+917702310750">+91 7702310750</a></div>
-            </div>
-            <div class="row">
-              <div class="label">Email</div>
-              <div class="val"><a id="cEmail" href="mailto:info@hanookexports.com">info@hanookglobaltraders.com</a></div>
-            </div>
-            <a id="cWhats" class="whatsapp-btn" href="https://wa.me/917702310750" target="_blank" rel="noopener">Chat on WhatsApp</a>
-          </div>
+          <aside class="card contact-card">
+            <div style="margin-bottom:12px"><strong>Hanook Global Traders</strong></div>
+            <div class="row"><div class="label">Location</div><div class="val">Kurnool, Andhra Pradesh, India</div></div>
+            <div class="row"><div class="label">Phone / WhatsApp</div><div class="val"><a href="tel:+917702310750">+91 7702310750</a></div></div>
+            <div class="row"><div class="label">Email</div><div class="val"><a href="mailto:info@hanookglobaltraders.com">info@hanookglobaltraders.com</a></div></div>
+            <div style="margin-top:12px"><a href="https://wa.me/917702310750" class="whatsapp-btn" target="_blank">Chat on WhatsApp</a></div>
+          </aside>
         </div>
       </section>
+
     </main>
 
-    <footer>
-      © <span id="year"></span> Hanook Global Traders — Merchant Exporter of Aluminium & Copper. All rights reserved.
-    </footer>
+    <footer>© Hanook Global Traders — Merchant Exporter of Aluminium & Copper</footer>
   </div>
-  
-      <div class="chat-body">
-        <input id="chatName" type="text" placeholder="Your name" aria-label="Your name">
-        <input id="chatEmail" type="email" placeholder="Your email" aria-label="Your email">
-        <input id="chatPhone" type="text" placeholder="Phone / WhatsApp (optional)" aria-label="Phone">
-        <textarea id="chatMsg" placeholder="Type your requirement (e.g. Aluminium A7, 50 MT, CIF Shanghai)" aria-label="Message"></textarea>
-        <div class="chat-small">We will reply by email or WhatsApp. Use the WhatsApp button for quicker response.</div>
-      </div>
 
+  <!-- ===== Floating chat widget (single) ===== -->
+  <div class="chat-float" id="chatFloat">
+    <div id="chatWindow" class="chat-window" aria-hidden="true">
+      <div class="chat-header">
+        <div class="title">Chat / Send Enquiry</div>
+        <button onclick="toggleChat()" style="background:transparent;border:0;color:#fff;font-size:18px;cursor:pointer">✕</button>
+      </div>
+      <div class="chat-body">
+        <input id="cfName" placeholder="Your name" />
+        <input id="cfEmail" placeholder="Your email" />
+        <input id="cfPhone" placeholder="Phone / WhatsApp (optional)" />
+        <textarea id="cfMsg" placeholder="Type your requirement (eg. Aluminium A7, 50 MT, CIF Shanghai)"></textarea>
+      </div>
       <div class="chat-footer">
-        <div style="display:flex;gap:8px">
-          <button class="chat-send" onclick="sendChatMail()">Send Email</button>
-          <button class="chat-whatsapp" onclick="sendWhatsApp()">WhatsApp</button>
-        </div>
-        <div style="font-size:12px;color:#94a3b8">Hanook Global Traders</div>
+        <button class="chat-send" onclick="chatSendMail()">Send Email</button>
+        <button class="chat-whatsapp" onclick="chatWhatsApp()">WhatsApp</button>
       </div>
     </div>
 
-    <button id="chatBtn" class="chat-button" onclick="toggleChat()" aria-label="Open chat">💬</button>
+    <button class="chat-button" id="chatBtn" aria-label="Open chat" onclick="toggleChat()">💬</button>
   </div>
 
   <script>
-    // === BASIC CONFIG (edit these 3 values if needed) ===
-    const PHONE = "+91 7702310750";
-    const EMAIL = "info@hanookexports.com";
-    const WHATS = "https://wa.me/917702310750";
-    const CHAT_SUBJECT = "Website enquiry from Hanook Global Traders";
+    // Toggle chat window
+    function toggleChat(){
+      const w = document.getElementById('chatWindow');
+      if(!w) return;
+      if(w.style.display === 'flex'){ w.style.display = 'none'; document.getElementById('chatBtn').focus(); }
+      else { w.style.display = 'flex'; document.getElementById('cfName').focus(); }
+    }
 
-    // fill contact links
-    document.getElementById("navPhone").href = "tel:" + PHONE.replace(/\s+/g,"");
-    document.getElementById("navPhone").textContent = PHONE;
-    document.getElementById("heroQuote").href = "mailto:" + EMAIL + "?subject=Sales%20Enquiry";
-    document.getElementById("cPhone").href = "tel:" + PHONE.replace(/\s+/g,"");
-    document.getElementById("cPhone").textContent = PHONE;
-    document.getElementById("cEmail").href = "mailto:" + EMAIL;
-    document.getElementById("cEmail").textContent = EMAIL;
-    document.getElementById("cWhats").href = WHATS;
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // counters animation
-    document.querySelectorAll(".counter .num").forEach(el=>{
-      const target = parseInt(el.dataset.target || "0", 10);
-      let current = 0;
-      const step = Math.max(1, Math.floor(target/120));
-      const timer = setInterval(()=>{
-        current += step;
-        if(current >= target){ current = target; clearInterval(timer); }
-        el.textContent = current.toLocaleString();
-      }, 14);
-    });
-
-    // contact form -> mailto
+    // Contact form (main page) -> open mail client with filled details
     function sendMail(e){
       e.preventDefault();
-      const name = document.getElementById("fName").value.trim();
-      const email = document.getElementById("fEmail").value.trim();
-      const phone = document.getElementById("fPhone").value.trim();
-      const msg = document.getElementById("fMsg").value.trim();
-      const subject = encodeURIComponent("Sales enquiry from " + name);
-      const body = encodeURIComponent(
-        "Name: " + name +
-        "\nEmail: " + email +
-        "\nPhone: " + phone +
-        "\n\nMessage:\n" + msg
-      );
-      window.location.href = "mailto:" + EMAIL + "?subject=" + subject + "&body=" + body;
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const msg = document.getElementById('message').value.trim();
+      const subject = encodeURIComponent('Website Enquiry — ' + (name || 'No name'));
+      const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nPhone: ' + phone + '\n\nRequirement:\n' + msg);
+      window.location.href = 'mailto:info@hanookglobaltraders.com?subject=' + subject + '&body=' + body;
     }
 
-      const subject = encodeURIComponent(CHAT_SUBJECT + ' — ' + (name || ''));
-      const body = encodeURIComponent(
-        'Name: ' + name + '\n' +
-        'Email: ' + email + '\n' +
-        'Phone: ' + phone + '\n\n' +
-        'Message:\n' + msg
-      );
-      window.location.href = 'mailto:' + EMAIL + '?subject=' + subject + '&body=' + body;
+    // Chat widget - send mail via mailto
+    function chatSendMail(){
+      const name = document.getElementById('cfName').value.trim();
+      const email = document.getElementById('cfEmail').value.trim();
+      const phone = document.getElementById('cfPhone').value.trim();
+      const msg = document.getElementById('cfMsg').value.trim();
+      if(!name && !email && !msg){ alert('Please enter name, email or a message.'); return; }
+      const subject = encodeURIComponent('Chat widget enquiry — ' + (name || 'No name'));
+      const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nPhone: ' + phone + '\n\nMessage:\n' + msg);
+      window.location.href = 'mailto:info@hanookglobaltraders.com?subject='+subject+'&body='+body;
     }
 
-    function sendWhatsApp(){
-      const name = document.getElementById('chatName').value.trim();
-      const phone = document.getElementById('chatPhone').value.trim();
-      const msg = document.getElementById('chatMsg').value.trim();
-      if(!msg){
-        alert('Please enter message to send via WhatsApp.');
-        return;
+    // Chat widget -> WhatsApp
+    function chatWhatsApp(){
+      const phone = document.getElementById('cfPhone').value.trim() || '+917702310750';
+      const name = document.getElementById('cfName').value.trim();
+      const msg = document.getElementById('cfMsg').value.trim() || 'Hello, I have an enquiry.';
+      const text = encodeURIComponent((name?('Name: '+name+'\n'):'') + msg);
+      // NOTE: use country code without plus: wa.me/917702310750
+      const waUrl = 'https://wa.me/917702310750?text=' + text;
+      window.open(waUrl, '_blank');
+    }
+
+    // small safeguard: ensure hero background path is correct
+    (function(){
+      const bg = document.getElementById('heroBg');
+      if(bg){
+        // if default path not present, you can set another fallback (already set in inline style above)
       }
-      const text = encodeURIComponent(
-        (name?('Name: ' + name + '\n'):'') +
-        (phone?('Phone: ' + phone + '\n'):'') +
-        '\n' + msg
-      );
-      const waLink = WHATS + '?text=' + text;
-      window.open(waLink, '_blank');
-    }
-
-    // Optional: open widget automatically after few seconds (disabled)
-    // setTimeout(()=>{ toggleChat(); }, 3000);
+    })();
   </script>
-  <!-- DEBUG / FORCE-VISIBILITY helper (temporary) -->
-<style>
-  /* ensure chat sits on top and is visible for testing */
-  .chat-float { z-index: 999999 !important; pointer-events:auto !important; }
-  .chat-window { display: flex !important; z-index: 999999 !important; }
-  #chatBtn { display: block !important; z-index: 999999 !important; }
-  /* make product images visible if broken */
-  .product-img { background: #f4f7fb; min-height:180px; object-fit:cover; }
-</style>
 </body>
 </html>
