@@ -5,109 +5,104 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Hanook Global Traders — Merchant Exporter</title>
   <meta name="description" content="Hanook Global Traders — Merchant Exporter of Aluminium Ingots (A7), Copper Cathodes and Aluminium Billets." />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
       --bg:#f4f7fb; --text:#0b1220; --muted:#6b7280;
       --accent:#0f5fb4; --accent-2:#0077ff; --card:#fff;
-      --radius:14px; --shadow-lg:0 30px 60px rgba(12,20,40,0.18);
-      --shadow-sm:0 10px 26px rgba(12,20,40,0.10);
+      --radius:14px; --shadow-lg:0 30px 60px rgba(12,20,40,0.12);
+      --shadow-sm:0 10px 26px rgba(12,20,40,0.08);
       --container:1180px;
       font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
     }
     *{box-sizing:border-box;margin:0;padding:0}
     html,body{height:100%;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
     a{color:inherit;text-decoration:none}
-    .wrap{max-width:var(--container);margin:0 auto;padding:18px 16px 48px;}
+    .wrap{max-width:var(--container);margin:0 auto;padding:18px 18px 48px;}
 
     /* header */
-    header{display:flex;align-items:center;justify-content:space-between;padding:8px 0 10px}
-    .brand{display:flex;align-items:center;gap:10px}
-    .brand-logo{width:46px;height:46px;border-radius:999px;background:#fff;display:grid;place-items:center;box-shadow:0 4px 12px rgba(15,23,42,0.12);font-weight:800;color:var(--accent)}
+    header{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand-logo{width:46px;height:46px;border-radius:999px;background:#fff;display:grid;place-items:center;box-shadow:0 6px 18px rgba(15,23,42,0.08);font-weight:800;color:var(--accent)}
     .brand-title{font-weight:800;font-size:18px}
     .brand-sub{font-size:12px;color:var(--muted)}
     .nav-actions{display:flex;align-items:center;gap:10px}
     .chip{font-size:12px;border-radius:999px;background:#e5efff;color:var(--accent);padding:6px 10px;font-weight:600}
-    .btn{border-radius:999px;border:0;padding:9px 14px;font-weight:700;cursor:pointer}
-    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 8px 22px rgba(15,96,188,0.35)}
-    .btn-outline{background:transparent;border:1px solid rgba(15,23,42,0.08);color:var(--text)}
+    .btn{border-radius:999px;border:0;padding:10px 14px;font-weight:700;cursor:pointer}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 8px 22px rgba(15,96,188,0.25)}
+    .btn-outline{background:transparent;border:1px solid rgba(15,23,42,0.06);color:var(--text)}
 
     /* hero */
-    .hero-shell{position:relative;border-radius:0 0 36px 36px;overflow:hidden;box-shadow:var(--shadow-lg);margin-top:6px}
-    .hero{position:relative;min-height:380px;display:flex;align-items:flex-end;padding:40px 6% 60px;color:#fff;isolation:isolate}
-    .hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:-2;filter:saturate(1.05)}
-    .hero-left{max-width:560px}
-    .hero-kicker{font-size:12px;letter-spacing:0.18em;font-weight:700;text-transform:uppercase;opacity:0.94}
-    .hero-title{font-size:34px;line-height:1.02;font-weight:800;margin-top:8px}
-    .hero-sub{margin-top:10px;font-size:14px;opacity:0.95;max-width:60ch}
+    .hero-shell{position:relative;border-radius:0 0 30px 30px;overflow:hidden;margin-top:8px}
+    .hero{position:relative;min-height:360px;display:flex;align-items:flex-end;padding:40px 6% 60px;color:#fff;isolation:isolate}
+    .hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:-2;filter:saturate(1)}
+    .hero-left{max-width:640px}
+    .hero-kicker{font-size:12px;letter-spacing:0.18em;font-weight:700;text-transform:uppercase;opacity:0.95}
+    .hero-title{font-size:36px;line-height:1.03;font-weight:800;margin-top:8px}
+    .hero-sub{margin-top:10px;font-size:15px;opacity:0.95;max-width:60ch;color:rgba(255,255,255,0.9)}
     .hero-cta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
-    .hero-badges{display:flex;gap:10px;margin-top:18px;font-size:11px;opacity:0.95;flex-wrap:wrap}
-    .badge{padding:6px 10px;border-radius:999px;background:rgba(3,16,46,0.55);border:1px solid rgba(255,255,255,0.08)}
+    .hero-ghost{background:rgba(255,255,255,0.12);padding:8px 12px;border-radius:999px;font-weight:700}
 
     /* features */
     .features-wrap{margin-top:-60px;padding:0 10px}
     .features-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
     @media (max-width:900px){ .features-grid{grid-template-columns:repeat(2,1fr)} }
     @media (max-width:560px){ .features-grid{grid-template-columns:1fr} }
-    .feature{background:var(--card);border-radius:18px;padding:18px 14px;box-shadow:var(--shadow-sm);text-align:left}
-    .feature-icon{width:40px;height:40px;border-radius:12px;background:#f3f5ff;display:grid;place-items:center;font-size:20px;margin-bottom:8px}
+    .feature{background:var(--card);border-radius:14px;padding:16px;box-shadow:var(--shadow-sm);text-align:left}
+    .feature-icon{width:40px;height:40px;border-radius:10px;background:#f3f5ff;display:grid;place-items:center;font-size:20px;margin-bottom:8px}
     .feature-title{font-weight:800;font-size:14px;margin-bottom:4px}
     .feature-text{font-size:13px;color:var(--muted);line-height:1.5}
 
     /* main */
-    main{margin-top:26px}
+    main{margin-top:28px}
     .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:16px}
     .section-head h2{font-size:20px;font-weight:800}
     .section-head p{font-size:13px;color:var(--muted);max-width:420px}
 
-    /* about + offerings */
-    .about-section{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;padding:40px 0}
+    .about-section{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;padding:30px 0}
     .about-image{flex:1;min-width:280px}
-    .about-image img{width:100%;border-radius:12px;box-shadow:0 8px 30px rgba(3,16,46,0.08)}
+    .about-image img{width:100%;border-radius:12px;box-shadow:0 8px 30px rgba(3,16,46,0.06)}
     .about-content{flex:1;min-width:320px}
     .about-content h4{color:var(--accent);font-weight:700}
     .about-content h2{font-size:28px;margin-top:6px}
     .about-content p{margin-top:12px;color:var(--muted);line-height:1.6}
 
     .offer-grid{display:flex;gap:20px;flex-wrap:wrap;margin-top:20px}
-    .offer-card{background:#fff;padding:22px;border-radius:12px;box-shadow:var(--shadow-sm);width:320px}
+    .offer-card{background:#fff;padding:18px;border-radius:12px;box-shadow:var(--shadow-sm);width:320px}
 
     /* products */
-    .products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+    .products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
     @media (max-width:900px){ .products-grid{grid-template-columns:repeat(2,1fr)} }
     @media (max-width:600px){ .products-grid{grid-template-columns:1fr} }
-    .product{background:var(--card);border-radius:18px;box-shadow:var(--shadow-sm);overflow:hidden;display:flex;flex-direction:column;transition:transform .24s}
+    .product{background:var(--card);border-radius:12px;box-shadow:var(--shadow-sm);overflow:hidden;display:flex;flex-direction:column;transition:transform .22s}
     .product:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
-    .product-img{width:100%;height:200px;object-fit:cover;display:block}
-    .product-body{padding:14px 14px 16px;display:flex;flex-direction:column;gap:8px}
+    .product-img{width:100%;height:180px;object-fit:cover;display:block}
+    .product-body{padding:12px 14px 18px;display:flex;flex-direction:column;gap:8px}
     .p-title{font-weight:800;font-size:15px}
     .p-sub{font-size:13px;color:var(--muted)}
     .pill{padding:6px 9px;border-radius:999px;background:#f3f5ff;color:var(--accent);font-weight:600}
 
     /* contact */
-    .contact-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:18px;margin-top:28px}
+    .contact-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:16px;margin-top:22px}
     @media (max-width:900px){ .contact-grid{grid-template-columns:1fr} }
-    .card{background:var(--card);border-radius:18px;padding:18px;box-shadow:var(--shadow-sm)}
+    .card{background:var(--card);border-radius:12px;padding:16px;box-shadow:var(--shadow-sm)}
     .field{display:flex;flex-direction:column;margin-bottom:10px;font-size:13px}
-    .field label{margin-bottom:4px;color:var(--muted)}
-    .field input,.field textarea{padding:10px;border-radius:12px;border:1px solid #dde4f1;font-size:13px;outline:none}
-    .field textarea{min-height:120px;resize:vertical}
-    .whatsapp-btn{display:inline-flex;align-items:center;gap:6px;background:#25D366;color:white;padding:9px 12px;border-radius:999px;font-size:13px;font-weight:800}
+    .field label{margin-bottom:6px;color:var(--muted)}
+    .field input,.field textarea{padding:10px;border-radius:10px;border:1px solid #e6edf8;font-size:14px;outline:none}
+    .field textarea{min-height:100px;resize:vertical}
+    .whatsapp-btn{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:white;padding:9px 12px;border-radius:999px;font-size:13px;font-weight:800}
 
-    footer{margin-top:26px;text-align:center;font-size:12px;color:var(--muted);padding:18px 0}
+    footer{margin-top:26px;text-align:center;font-size:13px;color:var(--muted);padding:18px 0}
 
-    /* chat widget */
-    .chat-float{position:fixed;right:16px;bottom:18px;z-index:99999;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial}
-    .chat-button{width:56px;height:56px;border-radius:50%;background:linear-gradient(90deg,#0f5fb4,#0077ff);color:#fff;display:grid;place-items:center;font-size:24px;box-shadow:0 14px 30px rgba(3,16,46,0.28);cursor:pointer;border:0}
-    .chat-window{width:320px;max-width:92vw;display:none;flex-direction:column;background:#fff;border-radius:14px;box-shadow:0 20px 40px rgba(3,16,46,0.18);overflow:hidden;margin-bottom:10px}
-    .chat-header{background:linear-gradient(90deg,#0f5fb4,#0077ff);color:#fff;padding:12px 14px;display:flex;align-items:center;justify-content:space-between}
-    .chat-body{padding:12px;display:flex;flex-direction:column;gap:8px}
-    .chat-body input, .chat-body textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6edf8;font-size:14px;outline:none}
-    .chat-footer{display:flex;gap:8px;padding:12px;align-items:center;justify-content:space-between}
-    .chat-send{background:#0f5fb4;color:#fff;border:0;padding:9px 12px;border-radius:10px;font-weight:700;cursor:pointer}
-    .chat-whatsapp{background:#25D366;color:#fff;border:0;padding:9px 10px;border-radius:10px;font-weight:700;cursor:pointer}
-    .chat-small{font-size:12px;color:#64748b}
-    @media (min-width:900px){ .chat-window{width:360px} }
+    /* floating chat/cta */
+    .float-cta{position:fixed;right:18px;bottom:18px;z-index:9999}
+    .cta-round{width:56px;height:56px;border-radius:50%;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;display:grid;place-items:center;font-size:20px;box-shadow:0 14px 32px rgba(3,16,46,0.18);cursor:pointer;border:0}
+
+    /* small screen */
+    @media (max-width:860px){
+      .hero-title{font-size:28px}
+      .wrap{padding:14px}
+    }
   </style>
 </head>
 <body>
@@ -115,7 +110,7 @@
     <!-- HEADER -->
     <header>
       <div class="brand">
-        <div class="brand-logo">HG</div>
+        <div class="brand-logo" id="logo">HG</div>
         <div>
           <div class="brand-title" id="companyName">Hanook Global Traders</div>
           <div class="brand-sub" id="companyTagline">Merchant exporter of metals & minerals</div>
@@ -138,49 +133,25 @@
           <div class="hero-kicker">Bridging India With Global Markets</div>
           <div class="hero-title">Merchant Exporter</div>
           <div class="hero-sub">
-            Aluminium Ingots (A7), Copper Cathodes and Aluminium Billets for buyers worldwide —
-            verified suppliers, compliant documentation and end-to-end logistics.
+            Aluminium Ingots (A7), Copper Cathodes and Aluminium Billets — verified suppliers, CIF/FOB shipments and fast RFQ response.
           </div>
 
           <div class="hero-cta">
             <a id="heroReadMore" class="btn btn-primary" href="#about">Read More</a>
             <a id="heroQuote" class="btn btn-outline" href="mailto:info@hanookglobaltraders.com?subject=Sales%20Enquiry">Request Quote</a>
           </div>
-
-          <div class="hero-badges">
-            <div class="badge">CIF / FOB / EXW</div>
-            <div class="badge">MTC & SGS inspection</div>
-            <div class="badge">Fast RFQ response</div>
-          </div>
         </div>
       </div>
-
-      <div style="height:90px;background:radial-gradient(120% 120% at 50% -20%,rgba(255,255,255,0.96),transparent 60%);"></div>
+      <div style="height:90px;background:linear-gradient(180deg,rgba(255,255,255,0.95),transparent);"></div>
     </div>
 
     <!-- FEATURES -->
     <div class="features-wrap">
-      <div class="features-grid">
-        <div class="feature">
-          <div class="feature-icon">🏅</div>
-          <div class="feature-title">Recognition & Compliance</div>
-          <div class="feature-text">Govt. registered merchant trader; IEC & DGFT-compliant documents for global trade.</div>
-        </div>
-        <div class="feature">
-          <div class="feature-icon">✅</div>
-          <div class="feature-title">Quality & Reliability</div>
-          <div class="feature-text">MTC on request; third-party inspection (SGS / Intertek) available.</div>
-        </div>
-        <div class="feature">
-          <div class="feature-icon">🚢</div>
-          <div class="feature-title">Hassle Logistics</div>
-          <div class="feature-text">Containerized & bulk shipments, on-time deliveries via trusted freight partners.</div>
-        </div>
-        <div class="feature">
-          <div class="feature-icon">🌍</div>
-          <div class="feature-title">Global Trade Expertise</div>
-          <div class="feature-text">Exports to Asia, Middle East, Europe & Africa with competitive pricing.</div>
-        </div>
+      <div class="features-grid" aria-hidden="false">
+        <div class="feature"><div class="feature-icon">🏅</div><div class="feature-title">Recognition & Compliance</div><div class="feature-text">IEC / DGFT ready — documentation support for export.</div></div>
+        <div class="feature"><div class="feature-icon">✅</div><div class="feature-title">Quality & Reliability</div><div class="feature-text">MTC & third-party inspection on request (SGS, Intertek).</div></div>
+        <div class="feature"><div class="feature-icon">🚢</div><div class="feature-title">Hassle Logistics</div><div class="feature-text">Containerized shipments, bonded warehouses and trusted freight partners.</div></div>
+        <div class="feature"><div class="feature-icon">🌍</div><div class="feature-title">Global Reach</div><div class="feature-text">Exports to Asia, Middle East, Europe & Africa with competitive pricing.</div></div>
       </div>
     </div>
 
@@ -188,41 +159,35 @@
       <!-- ABOUT + OFFERS -->
       <section id="about" class="about-section">
         <div class="about-image">
-          <!-- CHANGE IMAGE: put file in assets/, recommended name: ship-banner.jpg or ingots-a7.jpg -->
-          <img id="aboutImg" src="assets/ingots-a7.jpg" alt="Aluminium Ingots A7">
+          <img id="aboutImg" src="assets/ship-banner.jpg" alt="Shipping banner">
         </div>
 
         <div class="about-content">
           <h4>WHO IS HANOOK GLOBAL TRADERS</h4>
           <h2>Your Trusted Partner for Quality Exports</h2>
-          <p>Hanook Global Traders connects India with global markets through transparent pricing, verified suppliers and reliable shipment processes. We supply Aluminium Ingots (A7), Copper Cathodes and Aluminium Billets with complete documentation and end-to-end logistics.</p>
+          <p>We provide ready stock and contract supply of Aluminium Ingots (A7), Copper Cathodes and Aluminium Billets. Fast quotations, compliance-ready documentation and reliable logistics.</p>
 
           <div class="offer-grid">
             <div class="offer-card">
-              <div style="font-size:34px;">📦</div>
+              <div style="font-size:28px;">📦</div>
               <h3 style="margin-top:8px;">Product Sourcing & Procurement</h3>
-              <p style="color:var(--muted);margin-top:8px;">Identifying and supplying top-tier Indian products with trusted manufacturers.</p>
+              <p style="color:var(--muted);margin-top:8px;">We connect verified suppliers with international buyers and handle export paperwork.</p>
             </div>
 
             <div class="offer-card">
-              <div style="font-size:34px;">🏆</div>
+              <div style="font-size:28px;">🏆</div>
               <h3 style="margin-top:8px;">Quality Control & Assurance</h3>
-              <p style="color:var(--muted);margin-top:8px;">Stringent quality checks and international inspection standards.</p>
+              <p style="color:var(--muted);margin-top:8px;">Third-party inspection, COA and MTC available per shipment.</p>
             </div>
           </div>
         </div>
       </section>
 
       <!-- PRODUCTS -->
-      <section style="margin-top:10px;">
+      <section style="margin-top:20px;">
         <div class="section-head">
-          <div>
-            <h2>Key Products</h2>
-            <p>Metals we currently focus on. Detailed specification sheets and SCOs are shared once buyer details are verified.</p>
-          </div>
-          <div style="font-size:12px;color:var(--muted);">
-            Need another metal or scrap grade?<br>Ask in your enquiry — we can source through our network.
-          </div>
+          <h2>Key Products</h2>
+          <p>Metals we currently focus on. Detailed spec sheets & SCOs are provided after buyer verification.</p>
         </div>
 
         <div class="products-grid">
@@ -230,8 +195,8 @@
             <img src="assets/ingots-a7.jpg" alt="Aluminium Ingots A7" class="product-img">
             <div class="product-body">
               <div class="p-title">Aluminium Ingots (A7)</div>
-              <div class="p-sub">99.70% purity, A7 grade ingots for extrusion and casting. MTC and third-party inspection on request.</div>
-              <div class="meta-row" style="display:flex;justify-content:space-between;align-items:center;margin-top:10px"><span class="pill">MOQ: 2500 MT</span><span style="color:var(--muted);font-size:13px">CIF / FOB / EXW</span></div>
+              <div class="p-sub">99.70% purity, A7 grade. MTC and third-party inspection on request.</div>
+              <div style="display:flex;gap:8px;align-items:center;margin-top:6px"><span class="pill">MOQ: 2500 MT</span><small style="color:var(--muted)">&nbsp;CIF / FOB / EXW</small></div>
             </div>
           </article>
 
@@ -239,8 +204,8 @@
             <img src="assets/copper-cathode.jpg" alt="Copper Cathodes" class="product-img">
             <div class="product-body">
               <div class="p-title">Copper Cathodes</div>
-              <div class="p-sub">High-grade cathodes for smelting and manufacturing. COA and inspection on request.</div>
-              <div class="meta-row" style="display:flex;justify-content:space-between;align-items:center;margin-top:10px"><span class="pill">MOQ: 1500 MT</span><span style="color:var(--muted);font-size:13px">CIF / FOB</span></div>
+              <div class="p-sub">High-grade cathodes for smelting & manufacturing. COA on request.</div>
+              <div style="display:flex;gap:8px;align-items:center;margin-top:6px"><span class="pill">MOQ: 1500 MT</span><small style="color:var(--muted)">&nbsp;CIF / FOB</small></div>
             </div>
           </article>
 
@@ -248,16 +213,16 @@
             <img src="assets/aluminium-billets.jpg" alt="Aluminium Billets" class="product-img">
             <div class="product-body">
               <div class="p-title">Aluminium Billets</div>
-              <div class="p-sub">Extrusion-grade billets with custom diameters and lengths suitable for manufacturers.</div>
-              <div class="meta-row" style="display:flex;justify-content:space-between;align-items:center;margin-top:10px"><span class="pill">MOQ: Notified MT</span><span style="color:var(--muted);font-size:13px">CIF / FOB / EXW</span></div>
+              <div class="p-sub">Extrusion-grade billets with custom sizes for production.</div>
+              <div style="display:flex;gap:8px;align-items:center;margin-top:6px"><span class="pill">MOQ: Contact</span><small style="color:var(--muted)">&nbsp;CIF / FOB / EXW</small></div>
             </div>
           </article>
         </div>
       </section>
 
       <!-- CONTACT -->
-      <section id="contact" style="margin-top:32px;">
-        <div class="section-head"><h2>Contact & Enquiries</h2><p>Share your requirement with destination port, target quantity and preferred payment terms.</p></div>
+      <section id="contact" style="margin-top:28px;">
+        <div class="section-head"><h2>Contact & Enquiries</h2><p>Share destination port, target quantity & payment terms. We'll reply quickly.</p></div>
 
         <div class="contact-grid">
           <div class="card">
@@ -265,7 +230,7 @@
               <div class="field"><label>Your Name</label><input id="name" required></div>
               <div class="field"><label>Email</label><input id="email" type="email" required></div>
               <div class="field"><label>Phone / WhatsApp</label><input id="phone"></div>
-              <div class="field"><label>Product & Requirement</label><textarea id="message" placeholder="Example: Aluminium A7, 50000 MT per month, CIF Shanghai"></textarea></div>
+              <div class="field"><label>Product & Requirement</label><textarea id="message" placeholder="Example: Aluminium A7, 5000 MT, CIF Shanghai"></textarea></div>
               <div style="display:flex;gap:10px;align-items:center">
                 <button type="submit" class="btn btn-primary">Send Enquiry</button>
                 <a class="btn btn-outline" id="emailDirect" href="mailto:info@hanookglobaltraders.com?subject=Website%20Enquiry">Email Direct</a>
@@ -275,136 +240,58 @@
 
           <aside class="card contact-card">
             <div style="margin-bottom:12px"><strong>Hanook Global Traders</strong></div>
-            <div class="row"><div class="label">Location</div><div class="val">Kurnool, Andhra Pradesh, India</div></div>
-            <div class="row"><div class="label">Phone / WhatsApp</div><div class="val"><a id="phoneLink" href="tel:+917702310750">+91 7702310750</a></div></div>
-            <div class="row"><div class="label">Email</div><div class="val"><a id="emailLink" href="mailto:info@hanookglobaltraders.com">info@hanookglobaltraders.com</a></div></div>
-            <div style="margin-top:12px"><a id="waBtn" href="https://wa.me/917702310750" class="whatsapp-btn" target="_blank">Chat on WhatsApp</a></div>
+            <div style="margin-bottom:8px"><strong>Location:</strong> Kurnool, Andhra Pradesh, India</div>
+            <div style="margin-bottom:8px"><strong>Phone / WhatsApp:</strong> <a href="tel:+917702310750">+91 7702310750</a></div>
+            <div style="margin-bottom:8px"><strong>Email:</strong> <a href="mailto:info@hanookglobaltraders.com">info@hanookglobaltraders.com</a></div>
+            <div style="margin-top:12px"><a href="https://wa.me/917702310750" class="whatsapp-btn" target="_blank">Chat on WhatsApp</a></div>
           </aside>
         </div>
       </section>
-
     </main>
 
-    <footer>© <span id="yearEl"></span> Hanook Global Traders — Merchant Exporter of Aluminium & Copper</footer>
+    <footer>© Hanook Global Traders — Merchant Exporter of Aluminium & Copper</footer>
   </div>
 
-  <!-- ===== Floating chat widget (single) ===== -->
-  <div class="chat-float" id="chatFloat">
-    <div id="chatWindow" class="chat-window" aria-hidden="true">
-      <div class="chat-header">
-        <div class="title">Chat / Send Enquiry</div>
-        <button onclick="toggleChat()" style="background:transparent;border:0;color:#fff;font-size:18px;cursor:pointer">✕</button>
-      </div>
-      <div class="chat-body">
-        <input id="cfName" placeholder="Your name" />
-        <input id="cfEmail" placeholder="Your email" />
-        <input id="cfPhone" placeholder="Phone / WhatsApp (optional)" />
-        <textarea id="cfMsg" placeholder="Type your requirement (eg. Aluminium A7, 50 MT, CIF Shanghai)"></textarea>
-      </div>
-      <div class="chat-footer">
-        <button class="chat-send" onclick="chatSendMail()">Send Email</button>
-        <button class="chat-whatsapp" onclick="chatWhatsApp()">WhatsApp</button>
-      </div>
-    </div>
-
-    <button class="chat-button" id="chatBtn" aria-label="Open chat" onclick="toggleChat()">💬</button>
+  <div class="float-cta">
+    <a class="cta-round" href="https://wa.me/917702310750" target="_blank" title="WhatsApp"><span>💬</span></a>
   </div>
 
   <script>
-    // config — change here if needed
-    const CONFIG = {
-      phone: "+91 7702310750",
-      email: "info@hanookglobaltraders.com",
-      whatsapp: "https://wa.me/917702310750",
-      heroLocalCandidates: [
+    // ===== hero background loader with local images fallback to Unsplash =====
+    (function loadHeroBackground(){
+      const hero = document.getElementById('heroBg');
+      const candidates = [
         'assets/ship-banner.jpg',
         'assets/ship-banner.png',
         'assets/banner.jpg',
-        'assets/banner.png',
-        'assets/hero.jpg',
-        'assets/hero.png'
-      ],
-      heroFallbackUnsplash: "https://images.unsplash.com/photo-1507120410856-1f35574c3b45?q=80&w=1600&auto=format&fit=crop"
-    };
-
-    // set header contact links and year
-    document.getElementById('navPhone').href = "tel:" + CONFIG.phone.replace(/\s+/g,'');
-    document.getElementById('navPhone').textContent = CONFIG.phone;
-    document.getElementById('phoneLink').href = "tel:" + CONFIG.phone.replace(/\s+/g,'');
-    document.getElementById('phoneLink').textContent = CONFIG.phone;
-    document.getElementById('emailLink').href = "mailto:" + CONFIG.email;
-    document.getElementById('emailLink').textContent = CONFIG.email;
-    document.getElementById('emailDirect').href = "mailto:" + CONFIG.email + "?subject=Website%20Enquiry";
-    document.getElementById('waBtn').href = CONFIG.whatsapp;
-    document.getElementById('yearEl').textContent = new Date().getFullYear();
-
-    // load hero background: try local assets first then fallback to unsplash
-    (function loadHeroBackground(){
-      const hero = document.getElementById('heroBg');
-      if(!hero) return;
-      let i = 0;
+        'assets/hero.jpg'
+      ];
+      let i=0;
       function tryNext(){
-        if(i >= CONFIG.heroLocalCandidates.length){
-          hero.style.backgroundImage = 'linear-gradient(140deg, rgba(2,18,46,0.88), rgba(15,94,178,0.55)), url("' + CONFIG.heroFallbackUnsplash + '")';
-          hero.style.backgroundSize = 'cover';
-          hero.style.backgroundPosition = 'center';
+        if(i >= candidates.length){
+          hero.style.backgroundImage = 'linear-gradient(140deg, rgba(2,18,46,0.82), rgba(15,94,178,0.55)), url("https://images.unsplash.com/photo-1507120410856-1f35574c3b45?q=80&w=1600&auto=format&fit=crop")';
+          hero.style.backgroundSize='cover'; hero.style.backgroundPosition='center';
           return;
         }
-        const url = CONFIG.heroLocalCandidates[i++];
         const img = new Image();
-        img.onload = function(){ hero.style.backgroundImage = 'linear-gradient(140deg, rgba(2,18,46,0.88), rgba(15,94,178,0.55)), url("' + url + '")'; hero.style.backgroundSize = 'cover'; hero.style.backgroundPosition = 'center'; };
-        img.onerror = tryNext;
-        img.src = url;
+        img.onload = function(){ hero.style.backgroundImage = 'linear-gradient(140deg, rgba(2,18,46,0.82), rgba(15,94,178,0.55)), url(\"' + candidates[i] + '\")'; hero.style.backgroundSize='cover'; hero.style.backgroundPosition='center'; };
+        img.onerror = function(){ i++; tryNext(); };
+        img.src = candidates[i];
       }
       tryNext();
     })();
 
-    // chat toggle
-    function toggleChat(){
-      const w = document.getElementById('chatWindow');
-      const btn = document.getElementById('chatBtn');
-      if(!w) return;
-      if(getComputedStyle(w).display === 'flex'){ w.style.display = 'none'; btn.focus(); }
-      else { w.style.display = 'flex'; document.getElementById('cfName').focus(); }
-    }
-
-    // main contact form — opens default mail client (mailto fallback)
-    function sendMail(e){
-      e.preventDefault();
+    // send contact as mailto with details
+    function sendMail(ev){
+      ev.preventDefault();
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
       const phone = document.getElementById('phone').value.trim();
       const msg = document.getElementById('message').value.trim();
       const subject = encodeURIComponent('Website Enquiry — ' + (name || 'No name'));
-      const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nPhone: ' + phone + '\n\nRequirement:\n' + msg);
-      window.location.href = 'mailto:' + CONFIG.email + '?subject=' + subject + '&body=' + body;
+      const body = encodeURIComponent('Name: ' + name + '\\nEmail: ' + email + '\\nPhone: ' + phone + '\\n\\nRequirement:\\n' + msg);
+      window.location.href = 'mailto:info@hanookglobaltraders.com?subject=' + subject + '&body=' + body;
     }
-
-    // chat send: use mailto OR open whatsapp with prefilled text
-    function chatSendMail(){
-      const name = document.getElementById('cfName').value.trim();
-      const email = document.getElementById('cfEmail').value.trim();
-      const phone = document.getElementById('cfPhone').value.trim();
-      const msg = document.getElementById('cfMsg').value.trim();
-      const subject = encodeURIComponent('Quick Enquiry — ' + (name || 'No name'));
-      const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nPhone: ' + phone + '\n\nMessage:\n' + msg);
-      window.location.href = 'mailto:' + CONFIG.email + '?subject=' + subject + '&body=' + body;
-    }
-
-    function chatWhatsApp(){
-      const name = encodeURIComponent(document.getElementById('cfName').value.trim() || '');
-      const phone = encodeURIComponent(document.getElementById('cfPhone').value.trim() || '');
-      const msg = encodeURIComponent(document.getElementById('cfMsg').value.trim() || '');
-      // create a short message for whatsapp
-      let text = 'Hello, I have an enquiry';
-      if(name) text += '%0AName: ' + name;
-      if(phone) text += '%0APhone: ' + phone;
-      if(msg) text += '%0A%0A' + msg;
-      // open whatsapp
-      window.open(CONFIG.whatsapp + '?text=' + text, '_blank');
-    }
-
-    // Example: if you want to force a local hero image but file name different, upload to repo assets/ then refresh
   </script>
 </body>
 </html>
