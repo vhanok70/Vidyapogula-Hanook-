@@ -10,7 +10,7 @@
     :root{
       --bg:#f4f7fb; --text:#0b1220; --muted:#6b7280;
       --accent:#0f5fb4; --accent-2:#0077ff; --card:#fff;
-      --radius:16px; --shadow-lg:0 30px 60px rgba(12,20,40,0.18);
+      --radius:14px; --shadow-lg:0 30px 60px rgba(12,20,40,0.18);
       --shadow-sm:0 10px 26px rgba(12,20,40,0.10);
       --container:1180px;
       font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
@@ -33,10 +33,10 @@
     .btn-outline{background:transparent;border:1px solid rgba(15,23,42,0.08);color:var(--text)}
 
     /* hero */
-    .hero-shell{position:relative;border-radius:0 0 40px 40px;overflow:hidden;box-shadow:var(--shadow-lg);margin-top:6px}
+    .hero-shell{position:relative;border-radius:0 0 36px 36px;overflow:hidden;box-shadow:var(--shadow-lg);margin-top:6px}
     .hero{position:relative;min-height:380px;display:flex;align-items:flex-end;padding:40px 6% 60px;color:#fff;isolation:isolate}
     .hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:-2;filter:saturate(1.05)}
-    .hero-left{max-width:540px}
+    .hero-left{max-width:560px}
     .hero-kicker{font-size:12px;letter-spacing:0.18em;font-weight:700;text-transform:uppercase;opacity:0.94}
     .hero-title{font-size:34px;line-height:1.02;font-weight:800;margin-top:8px}
     .hero-sub{margin-top:10px;font-size:14px;opacity:0.95;max-width:60ch}
@@ -96,7 +96,7 @@
 
     footer{margin-top:26px;text-align:center;font-size:12px;color:var(--muted);padding:18px 0}
 
-    /* floating chat */
+    /* chat widget */
     .chat-float{position:fixed;right:16px;bottom:18px;z-index:99999;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial}
     .chat-button{width:56px;height:56px;border-radius:50%;background:linear-gradient(90deg,#0f5fb4,#0077ff);color:#fff;display:grid;place-items:center;font-size:24px;box-shadow:0 14px 30px rgba(3,16,46,0.28);cursor:pointer;border:0}
     .chat-window{width:320px;max-width:92vw;display:none;flex-direction:column;background:#fff;border-radius:14px;box-shadow:0 20px 40px rgba(3,16,46,0.18);overflow:hidden;margin-bottom:10px}
@@ -131,7 +131,8 @@
 
     <!-- HERO -->
     <div class="hero-shell">
-      <div id="heroBg" class="hero-bg"></div>
+      <div id="heroBg" class="hero-bg" aria-hidden="true"></div>
+
       <div class="hero">
         <div class="hero-left">
           <div class="hero-kicker">Bridging India With Global Markets</div>
@@ -153,6 +154,7 @@
           </div>
         </div>
       </div>
+
       <div style="height:90px;background:radial-gradient(120% 120% at 50% -20%,rgba(255,255,255,0.96),transparent 60%);"></div>
     </div>
 
@@ -162,22 +164,22 @@
         <div class="feature">
           <div class="feature-icon">🏅</div>
           <div class="feature-title">Recognition & Compliance</div>
-          <div class="feature-text">Govt. registered merchant trader; IEC & DGFT-compliant documentation for smooth global trade.</div>
+          <div class="feature-text">Govt. registered merchant trader; IEC & DGFT-compliant documents for global trade.</div>
         </div>
         <div class="feature">
           <div class="feature-icon">✅</div>
           <div class="feature-title">Quality & Reliability</div>
-          <div class="feature-text">Mill Test Certificates (MTC) provided on request, third-party inspection (SGS / Intertek) available.</div>
+          <div class="feature-text">MTC on request; third-party inspection (SGS / Intertek) available.</div>
         </div>
         <div class="feature">
           <div class="feature-icon">🚢</div>
-          <div class="feature-title">0 Hassle Logistics</div>
-          <div class="feature-text">Containerized & bulk shipments, custom packaging and on-time deliveries through trusted freight partners.</div>
+          <div class="feature-title">Hassle Logistics</div>
+          <div class="feature-text">Containerized & bulk shipments, on-time deliveries via trusted freight partners.</div>
         </div>
         <div class="feature">
           <div class="feature-icon">🌍</div>
           <div class="feature-title">Global Trade Expertise</div>
-          <div class="feature-text">Export solutions for Asia, Middle East, Europe and Africa with competitive pricing structures.</div>
+          <div class="feature-text">Exports to Asia, Middle East, Europe & Africa with competitive pricing.</div>
         </div>
       </div>
     </div>
@@ -186,8 +188,8 @@
       <!-- ABOUT + OFFERS -->
       <section id="about" class="about-section">
         <div class="about-image">
-          <!-- replace path with your uploaded image in assets/ -->
-          <img src="assets/ingots-a7.jpg" alt="Aluminium Ingots A7">
+          <!-- CHANGE IMAGE: put file in assets/, recommended name: ship-banner.jpg or ingots-a7.jpg -->
+          <img id="aboutImg" src="assets/ingots-a7.jpg" alt="Aluminium Ingots A7">
         </div>
 
         <div class="about-content">
@@ -232,7 +234,7 @@
             <img src="assets/copper-cathode.jpg" alt="Copper Cathodes" class="product-img">
             <div class="product-body">
               <div class="p-title">Copper Cathodes</div>
-              <div class="p-sub">High-grade copper cathodes for smelting and manufacturing. COA and inspection on request.</div>
+              <div class="p-sub">High-grade cathodes for smelting and manufacturing. COA and inspection on request.</div>
               <div class="meta-row"><span class="pill">MOQ: 1500 MT</span><span style="color:var(--muted);font-size:13px">CIF / FOB</span></div>
             </div>
           </article>
@@ -241,7 +243,7 @@
             <img src="assets/aluminium-billets.jpg" alt="Aluminium Billets" class="product-img">
             <div class="product-body">
               <div class="p-title">Aluminium Billets</div>
-              <div class="p-sub">Extrusion-grade billets with custom diameters and lengths suitable for downstream manufacturers.</div>
+              <div class="p-sub">Extrusion-grade billets with custom diameters and lengths suitable for manufacturers.</div>
               <div class="meta-row"><span class="pill">MOQ: Notified MT</span><span style="color:var(--muted);font-size:13px">CIF / FOB / EXW</span></div>
             </div>
           </article>
@@ -304,11 +306,48 @@
   </div>
 
   <script>
+    // -------------- Hero background loader with fallback --------------
+    (function loadHeroBackground(){
+      // list local filenames to try (in order). Put your banner in assets/ with one of these names.
+      const candidates = [
+        'assets/ship-banner.jpg',
+        'assets/ship-banner.png',
+        'assets/banner.jpg',
+        'assets/banner.png',
+        'assets/hero.jpg',
+        'assets/hero.png'
+      ];
+
+      const hero = document.getElementById('heroBg');
+      if(!hero) return;
+
+      // try to load each local candidate; if none load, use an Unsplash fallback
+      let found = false;
+      let index = 0;
+
+      function tryNext(){
+        if(index >= candidates.length){
+          // final fallback (Unsplash)
+          hero.style.backgroundImage = 'linear-gradient(140deg, rgba(2,18,46,0.88), rgba(15,94,178,0.55)), url("https://images.unsplash.com/photo-1507120410856-1f35574c3b45?q=80&w=1600&auto=format&fit=crop")';
+          hero.style.backgroundSize = 'cover';
+          hero.style.backgroundPosition = 'center';
+          return;
+        }
+        const url = candidates[index++];
+        const img = new Image();
+        img.onload = function(){ found = true; hero.style.backgroundImage = 'linear-gradient(140deg, rgba(2,18,46,0.88), rgba(15,94,178,0.55)), url("' + url + '")'; hero.style.backgroundSize = 'cover'; hero.style.backgroundPosition = 'center'; };
+        img.onerror = tryNext;
+        img.src = url;
+      }
+      tryNext();
+    })();
+
     // Toggle chat window
     function toggleChat(){
       const w = document.getElementById('chatWindow');
-      if(!w) return;
-      if(w.style.display === 'flex'){ w.style.display = 'none'; document.getElementById('chatBtn').focus(); }
+      const btn = document.getElementById('chatBtn');
+      if(!w || !btn) return;
+      if(w.style.display === 'flex'){ w.style.display = 'none'; btn.focus(); }
       else { w.style.display = 'flex'; document.getElementById('cfName').focus(); }
     }
 
@@ -338,22 +377,14 @@
 
     // Chat widget -> WhatsApp
     function chatWhatsApp(){
-      const phone = document.getElementById('cfPhone').value.trim() || '+917702310750';
+      const phoneVal = document.getElementById('cfPhone').value.trim();
+      const phone = (phoneVal && phoneVal.replace(/\s|\+/g,'')) || '917702310750';
       const name = document.getElementById('cfName').value.trim();
       const msg = document.getElementById('cfMsg').value.trim() || 'Hello, I have an enquiry.';
       const text = encodeURIComponent((name?('Name: '+name+'\n'):'') + msg);
-      // NOTE: use country code without plus: wa.me/917702310750
-      const waUrl = 'https://wa.me/917702310750?text=' + text;
+      const waUrl = 'https://wa.me/' + phone + '?text=' + text;
       window.open(waUrl, '_blank');
     }
-
-    // small safeguard: ensure hero background path is correct
-    (function(){
-      const bg = document.getElementById('heroBg');
-      if(bg){
-        // if default path not present, you can set another fallback (already set in inline style above)
-      }
-    })();
   </script>
 </body>
 </html>
