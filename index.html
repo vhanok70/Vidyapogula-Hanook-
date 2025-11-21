@@ -216,8 +216,13 @@
       <!-- PRODUCTS -->
       <section style="margin-top:10px;">
         <div class="section-head">
-          <h2>Key Products</h2>
-          <p>Metals we currently focus on. Detailed specification sheets and SCOs are shared once buyer details are verified.</p>
+          <div>
+            <h2>Key Products</h2>
+            <p>Metals we currently focus on. Detailed specification sheets and SCOs are shared once buyer details are verified.</p>
+          </div>
+          <div style="font-size:12px;color:var(--muted);">
+            Need another metal or scrap grade?<br>Ask in your enquiry — we can source through our network.
+          </div>
         </div>
 
         <div class="products-grid">
@@ -226,7 +231,7 @@
             <div class="product-body">
               <div class="p-title">Aluminium Ingots (A7)</div>
               <div class="p-sub">99.70% purity, A7 grade ingots for extrusion and casting. MTC and third-party inspection on request.</div>
-              <div class="meta-row"><span class="pill">MOQ: 2500 MT</span><span style="color:var(--muted);font-size:13px">CIF / FOB / EXW</span></div>
+              <div class="meta-row" style="display:flex;justify-content:space-between;align-items:center;margin-top:10px"><span class="pill">MOQ: 2500 MT</span><span style="color:var(--muted);font-size:13px">CIF / FOB / EXW</span></div>
             </div>
           </article>
 
@@ -235,7 +240,7 @@
             <div class="product-body">
               <div class="p-title">Copper Cathodes</div>
               <div class="p-sub">High-grade cathodes for smelting and manufacturing. COA and inspection on request.</div>
-              <div class="meta-row"><span class="pill">MOQ: 1500 MT</span><span style="color:var(--muted);font-size:13px">CIF / FOB</span></div>
+              <div class="meta-row" style="display:flex;justify-content:space-between;align-items:center;margin-top:10px"><span class="pill">MOQ: 1500 MT</span><span style="color:var(--muted);font-size:13px">CIF / FOB</span></div>
             </div>
           </article>
 
@@ -244,7 +249,7 @@
             <div class="product-body">
               <div class="p-title">Aluminium Billets</div>
               <div class="p-sub">Extrusion-grade billets with custom diameters and lengths suitable for manufacturers.</div>
-              <div class="meta-row"><span class="pill">MOQ: Notified MT</span><span style="color:var(--muted);font-size:13px">CIF / FOB / EXW</span></div>
+              <div class="meta-row" style="display:flex;justify-content:space-between;align-items:center;margin-top:10px"><span class="pill">MOQ: Notified MT</span><span style="color:var(--muted);font-size:13px">CIF / FOB / EXW</span></div>
             </div>
           </article>
         </div>
@@ -271,16 +276,16 @@
           <aside class="card contact-card">
             <div style="margin-bottom:12px"><strong>Hanook Global Traders</strong></div>
             <div class="row"><div class="label">Location</div><div class="val">Kurnool, Andhra Pradesh, India</div></div>
-            <div class="row"><div class="label">Phone / WhatsApp</div><div class="val"><a href="tel:+917702310750">+91 7702310750</a></div></div>
-            <div class="row"><div class="label">Email</div><div class="val"><a href="mailto:info@hanookglobaltraders.com">info@hanookglobaltraders.com</a></div></div>
-            <div style="margin-top:12px"><a href="https://wa.me/917702310750" class="whatsapp-btn" target="_blank">Chat on WhatsApp</a></div>
+            <div class="row"><div class="label">Phone / WhatsApp</div><div class="val"><a id="phoneLink" href="tel:+917702310750">+91 7702310750</a></div></div>
+            <div class="row"><div class="label">Email</div><div class="val"><a id="emailLink" href="mailto:info@hanookglobaltraders.com">info@hanookglobaltraders.com</a></div></div>
+            <div style="margin-top:12px"><a id="waBtn" href="https://wa.me/917702310750" class="whatsapp-btn" target="_blank">Chat on WhatsApp</a></div>
           </aside>
         </div>
       </section>
 
     </main>
 
-    <footer>© Hanook Global Traders — Merchant Exporter of Aluminium & Copper</footer>
+    <footer>© <span id="yearEl"></span> Hanook Global Traders — Merchant Exporter of Aluminium & Copper</footer>
   </div>
 
   <!-- ===== Floating chat widget (single) ===== -->
@@ -306,52 +311,64 @@
   </div>
 
   <script>
-    // -------------- Hero background loader with fallback --------------
-    (function loadHeroBackground(){
-      // list local filenames to try (in order). Put your banner in assets/ with one of these names.
-      const candidates = [
+    // config — change here if needed
+    const CONFIG = {
+      phone: "+91 7702310750",
+      email: "info@hanookglobaltraders.com",
+      whatsapp: "https://wa.me/917702310750",
+      heroLocalCandidates: [
         'assets/ship-banner.jpg',
         'assets/ship-banner.png',
         'assets/banner.jpg',
         'assets/banner.png',
         'assets/hero.jpg',
         'assets/hero.png'
-      ];
+      ],
+      heroFallbackUnsplash: "https://images.unsplash.com/photo-1507120410856-1f35574c3b45?q=80&w=1600&auto=format&fit=crop"
+    };
 
+    // set header contact links and year
+    document.getElementById('navPhone').href = "tel:" + CONFIG.phone.replace(/\s+/g,'');
+    document.getElementById('navPhone').textContent = CONFIG.phone;
+    document.getElementById('phoneLink').href = "tel:" + CONFIG.phone.replace(/\s+/g,'');
+    document.getElementById('phoneLink').textContent = CONFIG.phone;
+    document.getElementById('emailLink').href = "mailto:" + CONFIG.email;
+    document.getElementById('emailLink').textContent = CONFIG.email;
+    document.getElementById('emailDirect').href = "mailto:" + CONFIG.email + "?subject=Website%20Enquiry";
+    document.getElementById('waBtn').href = CONFIG.whatsapp;
+    document.getElementById('yearEl').textContent = new Date().getFullYear();
+
+    // load hero background: try local assets first then fallback to unsplash
+    (function loadHeroBackground(){
       const hero = document.getElementById('heroBg');
       if(!hero) return;
-
-      // try to load each local candidate; if none load, use an Unsplash fallback
-      let found = false;
-      let index = 0;
-
+      let i = 0;
       function tryNext(){
-        if(index >= candidates.length){
-          // final fallback (Unsplash)
-          hero.style.backgroundImage = 'linear-gradient(140deg, rgba(2,18,46,0.88), rgba(15,94,178,0.55)), url("https://images.unsplash.com/photo-1507120410856-1f35574c3b45?q=80&w=1600&auto=format&fit=crop")';
+        if(i >= CONFIG.heroLocalCandidates.length){
+          hero.style.backgroundImage = 'linear-gradient(140deg, rgba(2,18,46,0.88), rgba(15,94,178,0.55)), url("' + CONFIG.heroFallbackUnsplash + '")';
           hero.style.backgroundSize = 'cover';
           hero.style.backgroundPosition = 'center';
           return;
         }
-        const url = candidates[index++];
+        const url = CONFIG.heroLocalCandidates[i++];
         const img = new Image();
-        img.onload = function(){ found = true; hero.style.backgroundImage = 'linear-gradient(140deg, rgba(2,18,46,0.88), rgba(15,94,178,0.55)), url("' + url + '")'; hero.style.backgroundSize = 'cover'; hero.style.backgroundPosition = 'center'; };
+        img.onload = function(){ hero.style.backgroundImage = 'linear-gradient(140deg, rgba(2,18,46,0.88), rgba(15,94,178,0.55)), url("' + url + '")'; hero.style.backgroundSize = 'cover'; hero.style.backgroundPosition = 'center'; };
         img.onerror = tryNext;
         img.src = url;
       }
       tryNext();
     })();
 
-    // Toggle chat window
+    // chat toggle
     function toggleChat(){
       const w = document.getElementById('chatWindow');
       const btn = document.getElementById('chatBtn');
-      if(!w || !btn) return;
-      if(w.style.display === 'flex'){ w.style.display = 'none'; btn.focus(); }
+      if(!w) return;
+      if(getComputedStyle(w).display === 'flex'){ w.style.display = 'none'; btn.focus(); }
       else { w.style.display = 'flex'; document.getElementById('cfName').focus(); }
     }
 
-    // Contact form (main page) -> open mail client with filled details
+    // main contact form — opens default mail client (mailto fallback)
     function sendMail(e){
       e.preventDefault();
       const name = document.getElementById('name').value.trim();
@@ -360,31 +377,34 @@
       const msg = document.getElementById('message').value.trim();
       const subject = encodeURIComponent('Website Enquiry — ' + (name || 'No name'));
       const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nPhone: ' + phone + '\n\nRequirement:\n' + msg);
-      window.location.href = 'mailto:info@hanookglobaltraders.com?subject=' + subject + '&body=' + body;
+      window.location.href = 'mailto:' + CONFIG.email + '?subject=' + subject + '&body=' + body;
     }
 
-    // Chat widget - send mail via mailto
+    // chat send: use mailto OR open whatsapp with prefilled text
     function chatSendMail(){
       const name = document.getElementById('cfName').value.trim();
       const email = document.getElementById('cfEmail').value.trim();
       const phone = document.getElementById('cfPhone').value.trim();
       const msg = document.getElementById('cfMsg').value.trim();
-      if(!name && !email && !msg){ alert('Please enter name, email or a message.'); return; }
-      const subject = encodeURIComponent('Chat widget enquiry — ' + (name || 'No name'));
+      const subject = encodeURIComponent('Quick Enquiry — ' + (name || 'No name'));
       const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nPhone: ' + phone + '\n\nMessage:\n' + msg);
-      window.location.href = 'mailto:info@hanookglobaltraders.com?subject='+subject+'&body='+body;
+      window.location.href = 'mailto:' + CONFIG.email + '?subject=' + subject + '&body=' + body;
     }
 
-    // Chat widget -> WhatsApp
     function chatWhatsApp(){
-      const phoneVal = document.getElementById('cfPhone').value.trim();
-      const phone = (phoneVal && phoneVal.replace(/\s|\+/g,'')) || '917702310750';
-      const name = document.getElementById('cfName').value.trim();
-      const msg = document.getElementById('cfMsg').value.trim() || 'Hello, I have an enquiry.';
-      const text = encodeURIComponent((name?('Name: '+name+'\n'):'') + msg);
-      const waUrl = 'https://wa.me/' + phone + '?text=' + text;
-      window.open(waUrl, '_blank');
+      const name = encodeURIComponent(document.getElementById('cfName').value.trim() || '');
+      const phone = encodeURIComponent(document.getElementById('cfPhone').value.trim() || '');
+      const msg = encodeURIComponent(document.getElementById('cfMsg').value.trim() || '');
+      // create a short message for whatsapp
+      let text = 'Hello, I have an enquiry';
+      if(name) text += '%0AName: ' + name;
+      if(phone) text += '%0APhone: ' + phone;
+      if(msg) text += '%0A%0A' + msg;
+      // open whatsapp
+      window.open(CONFIG.whatsapp + '?text=' + text, '_blank');
     }
+
+    // Example: if you want to force a local hero image but file name different, upload to repo assets/ then refresh
   </script>
 </body>
 </html>
