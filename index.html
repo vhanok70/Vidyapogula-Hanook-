@@ -4,9 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Hanook Global Traders — Merchant Exporter</title>
-  <meta name="description" content="Hanook Global Traders — Merchant Exporter of Aluminium Ingots (A7), Copper Cathodes and Aluminium Billets. Bridging India with global markets with reliable logistics and compliant exports." />
+  <meta name="description" content="Hanook Global Traders — Merchant Exporter of Aluminium Ingots (A7), Copper Cathodes and Aluminium Billets. Bridging India with global markets." />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
   <style>
     :root{
       --bg:#f4f7fb;
@@ -81,7 +80,6 @@
     .hero-cta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
     .hero-cta .btn-primary{padding-inline:18px}
     .hero-cta .btn-outline{color:#e5edff;border-color:rgba(255,255,255,0.5);background:rgba(7,28,66,0.45)}
-    .hero-cta .btn-outline:hover{background:rgba(7,28,66,0.7)}
     .hero-badges{display:flex;gap:10px;margin-top:18px;font-size:11px;opacity:0.9;flex-wrap:wrap}
     .badge{padding:6px 10px;border-radius:999px;background:rgba(3,16,46,0.7);border:1px solid rgba(255,255,255,0.08)}
 
@@ -200,6 +198,37 @@
       .hero{min-height:320px;padding:30px 18px 70px}
       .hero-title{font-size:26px}
     }
+
+    /* ====== Chat widget CSS (floating chat) ====== */
+    .chat-float {
+      position: fixed;
+      right: 16px;
+      bottom: 18px;
+      z-index: 99999;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    }
+    .chat-button {
+      width:56px; height:56px; border-radius:50%;
+      background: linear-gradient(90deg,#0f5fb4,#0077ff);
+      color:#fff; display:grid; place-items:center; font-size:24px;
+      box-shadow:0 14px 30px rgba(3,16,46,0.28); cursor:pointer; border:0;
+    }
+    .chat-window{
+      width:320px; max-width:92vw; display:none; flex-direction:column;
+      background:#fff; border-radius:14px; box-shadow:0 20px 40px rgba(3,16,46,0.18);
+      overflow:hidden; margin-bottom:10px;
+    }
+    .chat-header{
+      background:linear-gradient(90deg,#0f5fb4,#0077ff); color:#fff; padding:12px 14px; display:flex; align-items:center; justify-content:space-between;
+    }
+    .chat-header .title{font-weight:700;font-size:14px}
+    .chat-body{padding:12px; display:flex; flex-direction:column; gap:8px}
+    .chat-body input, .chat-body textarea{width:100%; padding:10px; border-radius:8px; border:1px solid #e6edf8; font-size:14px; outline:none}
+    .chat-footer{display:flex; gap:8px; padding:12px; align-items:center; justify-content:space-between}
+    .chat-send{background:#0f5fb4;color:#fff;border:0;padding:9px 12px;border-radius:10px;font-weight:700;cursor:pointer}
+    .chat-whatsapp{background:#25D366;color:#fff;border:0;padding:9px 10px;border-radius:10px;font-weight:700;cursor:pointer}
+    .chat-small{font-size:12px;color:#64748b}
+    @media (min-width:900px){ .chat-window{width:360px} }
   </style>
 </head>
 
@@ -323,6 +352,10 @@
                 <div class="label">MT Export Potential</div>
               </div>
               <div class="counter">
+                <div class="num" data-target="120">0</div>
+                <div class="label">Active Leads & Buyers</div>
+              </div>
+              <div class="counter">
                 <div class="num" data-target="950">0</div>
                 <div class="label">Suppliers in Network</div>
               </div>
@@ -420,7 +453,7 @@
                 </div>
               </div>
               <div class="meta-row">
-                <span class="pill">MOQ: notified MT</span>
+                <span class="pill">MOQ: Notified MT</span>
                 <span class="muted">CIF / FOB / EXW</span>
               </div>
             </div>
@@ -452,7 +485,7 @@
               </div>
               <div class="field">
                 <label>Product & Requirement</label>
-                <textarea id="fMsg" placeholder="Example: Aluminium A7, 50 MT per month, CIF Shanghai, LC at sight" required></textarea>
+                <textarea id="fMsg" placeholder="Example: Aluminium A7, 50000 MT per month, CIF, LC at sight" required></textarea>
               </div>
               <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:6px">
                 <button type="submit" class="btn btn-primary">Send Enquiry</button>
@@ -479,7 +512,7 @@
             </div>
             <div class="row">
               <div class="label">Email</div>
-              <div class="val"><a id="cEmail" href="mailto:info@hanookglobeltraders.com">info@hanookglobaltraders.com</a></div>
+              <div class="val"><a id="cEmail" href="mailto:info@hanookexports.com">info@hanookglobaltraders.com</a></div>
             </div>
             <a id="cWhats" class="whatsapp-btn" href="https://wa.me/917702310750" target="_blank" rel="noopener">Chat on WhatsApp</a>
           </div>
@@ -492,18 +525,40 @@
     </footer>
   </div>
 
-  <!-- Floating contact bar -->
-  <div class="float-contact">
-    <a id="floatWhats" class="float-btn" href="https://wa.me/917702310750" target="_blank" rel="noopener">✆</a>
-    <a id="floatEmail" class="float-btn email" href="mailto:info@hanookexports.com">✉</a>
-    <button class="float-btn top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+  <!-- Floating chat widget (HTML) -->
+  <div class="chat-float" id="chatWidget" aria-hidden="false">
+    <div class="chat-window" id="chatWindow" role="dialog" aria-label="Chat with Hanook">
+      <div class="chat-header">
+        <div class="title">Chat / Send Enquiry</div>
+        <button onclick="toggleChat()" aria-label="Close chat" style="background:transparent;border:0;color:rgba(255,255,255,0.95);font-weight:700">✕</button>
+      </div>
+
+      <div class="chat-body">
+        <input id="chatName" type="text" placeholder="Your name" aria-label="Your name">
+        <input id="chatEmail" type="email" placeholder="Your email" aria-label="Your email">
+        <input id="chatPhone" type="text" placeholder="Phone / WhatsApp (optional)" aria-label="Phone">
+        <textarea id="chatMsg" placeholder="Type your requirement (e.g. Aluminium A7, 50 MT, CIF Shanghai)" aria-label="Message"></textarea>
+        <div class="chat-small">We will reply by email or WhatsApp. Use the WhatsApp button for quicker response.</div>
+      </div>
+
+      <div class="chat-footer">
+        <div style="display:flex;gap:8px">
+          <button class="chat-send" onclick="sendChatMail()">Send Email</button>
+          <button class="chat-whatsapp" onclick="sendWhatsApp()">WhatsApp</button>
+        </div>
+        <div style="font-size:12px;color:#94a3b8">Hanook Global Traders</div>
+      </div>
+    </div>
+
+    <button id="chatBtn" class="chat-button" onclick="toggleChat()" aria-label="Open chat">💬</button>
   </div>
 
   <script>
     // === BASIC CONFIG (edit these 3 values if needed) ===
     const PHONE = "+91 7702310750";
-    const EMAIL = "info@hanookglobaltraders.com";
+    const EMAIL = "info@hanookexports.com";
     const WHATS = "https://wa.me/917702310750";
+    const CHAT_SUBJECT = "Website enquiry from Hanook Global Traders";
 
     // fill contact links
     document.getElementById("navPhone").href = "tel:" + PHONE.replace(/\s+/g,"");
@@ -514,8 +569,6 @@
     document.getElementById("cEmail").href = "mailto:" + EMAIL;
     document.getElementById("cEmail").textContent = EMAIL;
     document.getElementById("cWhats").href = WHATS;
-    document.getElementById("floatWhats").href = WHATS;
-    document.getElementById("floatEmail").href = "mailto:" + EMAIL;
     document.getElementById("year").textContent = new Date().getFullYear();
 
     // counters animation
@@ -546,127 +599,59 @@
       );
       window.location.href = "mailto:" + EMAIL + "?subject=" + subject + "&body=" + body;
     }
-    <!-- START: Floating Chat Widget -->
-<style>
-  /* Chat widget styles */
-  .chat-float {
-    position: fixed;
-    right: 16px;
-    bottom: 18px;
-    z-index: 9999;
-    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-  }
-  .chat-button {
-    width:56px; height:56px; border-radius:50%;
-    background: linear-gradient(90deg,#0f5fb4,#0077ff);
-    color:#fff; display:grid; place-items:center; font-size:24px;
-    box-shadow:0 14px 30px rgba(3,16,46,0.28); cursor:pointer; border:0;
-  }
-  .chat-window{
-    width:320px; max-width:92vw; display:none; flex-direction:column;
-    background:#fff; border-radius:14px; box-shadow:0 20px 40px rgba(3,16,46,0.18);
-    overflow:hidden; margin-bottom:10px;
-  }
-  .chat-header{
-    background:linear-gradient(90deg,#0f5fb4,#0077ff); color:#fff; padding:12px 14px; display:flex; align-items:center; justify-content:space-between;
-  }
-  .chat-header .title{font-weight:700;font-size:14px}
-  .chat-body{padding:12px; display:flex; flex-direction:column; gap:8px}
-  .chat-body input, .chat-body textarea{width:100%; padding:10px; border-radius:8px; border:1px solid #e6edf8; font-size:14px; outline:none}
-  .chat-footer{display:flex; gap:8px; padding:12px; align-items:center; justify-content:space-between}
-  .chat-send{background:#0f5fb4;color:#fff;border:0;padding:9px 12px;border-radius:10px;font-weight:700;cursor:pointer}
-  .chat-whatsapp{background:#25D366;color:#fff;border:0;padding:9px 10px;border-radius:10px;font-weight:700;cursor:pointer}
-  .chat-small{font-size:12px;color:#64748b}
-  @media (min-width:900px){ .chat-window{width:360px} }
-</style>
 
-<div class="chat-float" id="chatWidget">
-  <div class="chat-window" id="chatWindow" role="dialog" aria-label="Chat with Hanook">
-    <div class="chat-header">
-      <div class="title">Chat / Send Enquiry</div>
-      <button onclick="toggleChat()" aria-label="Close chat" style="background:transparent;border:0;color:rgba(255,255,255,0.95);font-weight:700">✕</button>
-    </div>
-
-    <div class="chat-body">
-      <input id="chatName" type="text" placeholder="Your name" aria-label="Your name">
-      <input id="chatEmail" type="email" placeholder="Your email" aria-label="Your email">
-      <input id="chatPhone" type="text" placeholder="Phone / WhatsApp (optional)" aria-label="Phone">
-      <textarea id="chatMsg" placeholder="Type your requirement (e.g. Aluminium A7, 50 MT, CIF Shanghai)" aria-label="Message"></textarea>
-      <div class="chat-small">We will reply by email or WhatsApp. Use the WhatsApp button for quicker response.</div>
-    </div>
-
-    <div class="chat-footer">
-      <div style="display:flex;gap:8px">
-        <button class="chat-send" onclick="sendChatMail()">Send Email</button>
-        <button class="chat-whatsapp" onclick="sendWhatsApp()">WhatsApp</button>
-      </div>
-      <div style="font-size:12px;color:#94a3b8">Hanook Global Traders</div>
-    </div>
-  </div>
-
-  <button id="chatBtn" class="chat-button" onclick="toggleChat()" aria-label="Open chat">💬</button>
-</div>
-
-<script>
-  // === Edit these values if you want different recipient/email/WhatsApp ===
-  const CHAT_EMAIL = "info@hanookexports.com";      // your email
-  const CHAT_WA = "https://wa.me/917702310750";     // your WhatsApp link (wa.me)
-  const CHAT_SUBJECT = "Website enquiry from website";
-
-  function toggleChat(){
-    const w = document.getElementById('chatWindow');
-    const btn = document.getElementById('chatBtn');
-    if(!w) return;
-    if(w.style.display === 'flex'){
-      w.style.display = 'none';
-      btn.style.transform = '';
-    } else {
-      w.style.display = 'flex';
-      btn.style.transform = 'rotate(20deg)';
+    // === Chat widget functions ===
+    function toggleChat(){
+      const w = document.getElementById('chatWindow');
+      const btn = document.getElementById('chatBtn');
+      if(!w) return;
+      if(w.style.display === 'flex'){
+        w.style.display = 'none';
+        btn.style.transform = '';
+      } else {
+        w.style.display = 'flex';
+        btn.style.transform = 'rotate(20deg)';
+      }
     }
-  }
 
-  function sendChatMail(){
-    const name = document.getElementById('chatName').value.trim();
-    const email = document.getElementById('chatEmail').value.trim();
-    const phone = document.getElementById('chatPhone').value.trim();
-    const msg = document.getElementById('chatMsg').value.trim();
-    if(!name || !email || !msg){
-      alert('Please enter name, email and message.');
-      return;
+    function sendChatMail(){
+      const name = document.getElementById('chatName').value.trim();
+      const email = document.getElementById('chatEmail').value.trim();
+      const phone = document.getElementById('chatPhone').value.trim();
+      const msg = document.getElementById('chatMsg').value.trim();
+      if(!name || !email || !msg){
+        alert('Please enter name, email and message.');
+        return;
+      }
+      const subject = encodeURIComponent(CHAT_SUBJECT + ' — ' + (name || ''));
+      const body = encodeURIComponent(
+        'Name: ' + name + '\n' +
+        'Email: ' + email + '\n' +
+        'Phone: ' + phone + '\n\n' +
+        'Message:\n' + msg
+      );
+      window.location.href = 'mailto:' + EMAIL + '?subject=' + subject + '&body=' + body;
     }
-    const subject = encodeURIComponent(CHAT_SUBJECT + ' — ' + (name || ''));
-    const body = encodeURIComponent(
-      'Name: ' + name + '\n' +
-      'Email: ' + email + '\n' +
-      'Phone: ' + phone + '\n\n' +
-      'Message:\n' + msg
-    );
-    // Open mail client (user sends mail)
-    window.location.href = 'mailto:' + CHAT_EMAIL + '?subject=' + subject + '&body=' + body;
-  }
 
-  function sendWhatsApp(){
-    const name = document.getElementById('chatName').value.trim();
-    const phone = document.getElementById('chatPhone').value.trim();
-    const msg = document.getElementById('chatMsg').value.trim();
-    if(!msg){
-      alert('Please enter message to send via WhatsApp.');
-      return;
+    function sendWhatsApp(){
+      const name = document.getElementById('chatName').value.trim();
+      const phone = document.getElementById('chatPhone').value.trim();
+      const msg = document.getElementById('chatMsg').value.trim();
+      if(!msg){
+        alert('Please enter message to send via WhatsApp.');
+        return;
+      }
+      const text = encodeURIComponent(
+        (name?('Name: ' + name + '\n'):'') +
+        (phone?('Phone: ' + phone + '\n'):'') +
+        '\n' + msg
+      );
+      const waLink = WHATS + '?text=' + text;
+      window.open(waLink, '_blank');
     }
-    // Create message text for WhatsApp
-    const text = encodeURIComponent(
-      (name?('Name: ' + name + '\n'):'') +
-      (phone?('Phone: ' + phone + '\n'):'') +
-      '\n' + msg
-    );
-    // Open wa.me link with prefilled text
-    const waLink = (CHAT_WA.indexOf('wa.me') > -1 ? CHAT_WA : 'https://wa.me/' + CHAT_WA) + '?text=' + text;
-    window.open(waLink, '_blank');
-  }
 
-  // Optional: open widget automatically after few seconds (disabled)
-  // setTimeout(()=>{ /* toggleChat(); */ }, 3000);
-</script>
+    // Optional: open widget automatically after few seconds (disabled)
+    // setTimeout(()=>{ toggleChat(); }, 3000);
+  </script>
 </body>
 </html>
