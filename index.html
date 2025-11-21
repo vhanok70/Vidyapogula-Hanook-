@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Profile Card — Modern</title>
+
+  <!-- Google font (optional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --muted:#7b8794;
+      --accent:#1f6feb;
+      --accent-2:#163f7a;
+      --shadow: 0 6px 20px rgba(18, 35, 63, 0.07);
+      --radius:14px;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#eaf3ff 0%, #f6f7fb 60%);color:#1f2937}
+    .container{max-width:920px;margin:28px auto;padding:20px;}
+    /* hero */
+    .hero{
+      background:linear-gradient(180deg,#0f6fb7 0%, #0d8bd1 60%);
+      color:white;padding:36px;border-radius:18px;box-shadow:var(--shadow);position:relative;overflow:hidden;
+    }
+    .hero h1{font-size:28px;margin:0 0 12px 0;font-weight:700;line-height:1.05}
+    .hero p{margin:0 0 18px 0;color:rgba(255,255,255,0.95);opacity:0.95}
+    .hero .cta{
+      display:inline-block;padding:12px 22px;border-radius:999px;background:linear-gradient(90deg, #142a59,#1f6feb);box-shadow:0 6px 18px rgba(31,111,235,0.18);text-decoration:none;color:#fff;font-weight:600
+    }
+
+    /* profile card area */
+    .profile-wrap{display:flex;gap:18px;margin-top:20px;align-items:flex-start}
+    @media (max-width:880px){ .profile-wrap{flex-direction:column} }
+
+    .card{
+      background:var(--card);
+      border-radius:18px;
+      padding:22px;
+      box-shadow:var(--shadow);
+      width:100%;
+    }
+
+    /* profile header */
+    .profile-header{text-align:center;border-radius:14px;padding-bottom:10px}
+    .avatar{
+      width:110px;height:110px;border-radius:999px;background:linear-gradient(180deg,#fff,#f2f6ff);display:inline-block;padding:6px;border:6px solid #fff;box-shadow:0 6px 18px rgba(18,35,63,0.06);
+      margin-top:-64px;object-fit:cover;
+    }
+    .name{font-size:26px;font-weight:800;margin:12px 0 4px}
+    .title{color:var(--muted);font-weight:600;margin-bottom:8px}
+
+    /* tabs */
+    .tabs{display:flex;gap:0;border-top:1px solid #eef2f7;margin-top:14px;border-radius:12px;overflow:hidden;background:#fff;}
+    .tab-btn{flex:1;padding:14px 10px;text-align:center;color:#6b7280;background:transparent;border:none;cursor:pointer;font-weight:600}
+    .tab-btn.active{color:var(--accent);box-shadow:inset 0 -3px 0 var(--accent);background:#fff}
+
+    /* content area */
+    .content{padding:18px 8px}
+    .section-title{font-weight:700;margin-bottom:12px;color:#1f2937}
+    .email-list{display:flex;flex-direction:column;gap:12px}
+    .email-item{display:flex;align-items:center;gap:12px}
+    .email-icon{width:36px;height:36px;border-radius:8px;background:#f1f7ff;display:grid;place-items:center;color:var(--accent);font-weight:700}
+    .email-text{display:flex;flex-direction:column}
+    .email-text .address{color:var(--accent);text-decoration:none;font-weight:600}
+    .email-text .meta{color:var(--muted);font-size:13px;margin-top:2px}
+
+    .phone{display:flex;align-items:center;gap:12px;margin-top:12px}
+    .phone .pnum{font-weight:700;color:var(--accent-2)}
+
+    /* company cards */
+    .company-grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:8px}
+    @media(min-width:700px){ .company-grid{grid-template-columns:1fr 1fr} }
+    .company{
+      background:linear-gradient(180deg,#ffffff,#fbfdff);
+      border-radius:12px;padding:14px;border:1px solid #eef3f8;box-shadow:0 6px 18px rgba(12,30,60,0.04);display:flex;flex-direction:column;gap:12px;min-height:120px;
+    }
+    .company .logo{height:64px;display:flex;align-items:center;justify-content:center}
+    .company .name{font-weight:700}
+    .company a{color:var(--accent);text-decoration:none;font-weight:600;font-size:14px}
+
+    /* QR / companies tab placeholder */
+    .qr-placeholder{display:grid;place-items:center;padding:30px;border-radius:12px;background:#fbfdff;border:1px dashed #e6eef8;color:var(--muted)}
+
+    /* small footer helper */
+    .small{font-size:13px;color:var(--muted);margin-top:8px}
+
+    /* subtle container with white card under hero for the search panel*/
+    .search-panel{
+      margin-top:18px;background:#fff;border-radius:14px;padding:14px;box-shadow:var(--shadow);
+    }
+
+    /* utilities */
+    .muted{color:var(--muted)}
+    .divider{height:1px;background:#f1f5f9;margin:14px 0;border-radius:3px}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- HERO -->
+    <div class="hero">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;">
+        <div style="max-width:66%">
+          <h1>Discover Global Supply Chains In a Faster World</h1>
+          <p>AI-powered procurement intelligence for modern businesses — search suppliers, companies and more.</p>
+          <a class="cta" href="#profile">Enable AI Search</a>
+        </div>
+        <div style="min-width:72px;display:flex;align-items:center;justify-content:center">
+          <!-- small logo circle -->
+          <div style="width:64px;height:64px;border-radius:999px;background:white;display:grid;place-items:center;color:#0b4a85;font-weight:800">P</div>
+        </div>
+      </div>
+
+      <div class="search-panel" style="margin-top:18px">
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+          <button style="padding:9px 14px;border-radius:999px;background:#f1f9ff;border:1px solid #e6f0fb;font-weight:700">Supplier</button>
+          <button style="padding:9px 14px;border-radius:999px;background:transparent;border:0;color:var(--muted)">Buyer (Leads)</button>
+          <button style="padding:9px 14px;border-radius:999px;background:transparent;border:0;color:var(--muted)">HS Code</button>
+          <button style="padding:9px 14px;border-radius:999px;background:transparent;border:0;color:var(--muted)">Item</button>
+        </div>
+
+        <div style="margin-top:12px;display:flex;gap:12px;align-items:center">
+          <input id="search" placeholder="Search suppliers by company name" style="flex:1;padding:14px;border-radius:12px;border:1px solid #e9f0f6;outline:none;font-size:14px" />
+          <button style="padding:12px 18px;border-radius:12px;background:linear-gradient(90deg,#163f7a,#1f6feb);color:white;border:0;font-weight:700">Search</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROFILE / CARD -->
+    <div id="profile" class="profile-wrap" style="margin-top:18px;">
+      <div class="card" style="max-width:520px;">
+        <div class="profile-header">
+          <img id="avatar" class="avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop&s=placeholder" alt="Avatar" />
+          <div class="name" id="fullName">Nativ Shechter Strulov</div>
+          <div class="title" id="title">Chief Executive Officer</div>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="Profile tabs">
+          <button class="tab-btn active" data-tab="contact">Contact Info</button>
+          <button class="tab-btn" data-tab="companies">Companies</button>
+          <button class="tab-btn" data-tab="qr">QR Code</button>
+        </div>
+
+        <div class="content">
+          <!-- Contact tab -->
+          <div id="contact" class="tab-panel">
+            <div class="section-title">Email Addresses</div>
+            <div class="email-list" id="emailList">
+              <!-- emails inserted by JS -->
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="section-title">Phone</div>
+            <div class="phone">
+              <div class="email-icon">📞</div>
+              <div style="display:flex;flex-direction:column">
+                <div class="pnum" id="phoneNumber">+91 7702310750</div>
+                <div class="muted">Mobile</div>
+              </div>
+            </div>
+
+            <div class="small">Social</div>
+          </div>
+
+          <!-- Companies tab -->
+          <div id="companies" class="tab-panel" style="display:none">
+            <div class="section-title">Companies</div>
+            <div class="company-grid" id="companyGrid">
+              <!-- inserted by JS -->
+            </div>
+          </div>
+
+          <!-- QR tab -->
+          <div id="qr" class="tab-panel" style="display:none">
+            <div class="section-title">QR Code</div>
+            <div class="qr-placeholder">
+              <div>QR code / vCard will appear here</div>
+              <div style="margin-top:8px" class="muted">(Generate a QR that links to this page or a vCard)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- right column: example company highlights -->
+      <div style="width:100%;max-width:340px;">
+        <div class="card">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div>
+              <div style="font-weight:800;font-size:18px">Profile Actions</div>
+              <div class="muted" style="margin-top:6px;font-size:13px">Quick actions for your profile</div>
+            </div>
+            <div style="text-align:right">
+              <button style="background:#f1f7ff;border:0;padding:8px 12px;border-radius:10px;font-weight:700;color:var(--accent)">Edit</button>
+            </div>
+          </div>
+
+          <div style="margin-top:16px">
+            <div class="section-title">Highlighted companies</div>
+            <div class="company-grid" style="grid-template-columns:1fr">
+              <div class="company" style="display:flex;gap:12px;align-items:center">
+                <div class="logo"><img src="https://via.placeholder.com/84x44?text=P" alt="Purra" style="height:40px;"/></div>
+                <div style="flex:1">
+                  <div class="name">Purra Technologies Ltd</div>
+                  <a href="#" onclick="return false">www.purra.ai</a>
+                </div>
+              </div>
+
+              <div class="company" style="display:flex;gap:12px;align-items:center">
+                <div class="logo"><img src="https://via.placeholder.com/84x44?text=B" alt="Bayin" style="height:40px;"/></div>
+                <div style="flex:1">
+                  <div class="name">Bay-In Sourcing Ltd</div>
+                  <a href="#" onclick="return false">www.bayin.co.il</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Replace user data here. This is the only place you need to edit to customize.
+    const user = {
+      name: "Vidyapogula Hanook",
+      title: "Chief Executive Officer",
+      avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop&s=placeholder",
+      phone: "+91 7702310750",
+      emails: [
+        { address: "nativ@purra.ai", company: "Purra Technologies" },
+        { address: "nativ@bayin.co.il", company: "Bay-In Sourcing" },
+        { address: "nativ@i-sya.com", company: "S.Y.A. Investments" },
+        { address: "nativ@pangeadefense.com", company: "Pangea Defense" }
+      ],
+      companies: [
+        { name: "Purra Technologies Ltd", url: "https://www.purra.ai", logo: "https://via.placeholder.com/300x100?text=Purra" },
+        { name: "Bay-In Sourcing Ltd", url: "https://www.bayin.co.il", logo: "https://via.placeholder.com/300x100?text=Bayin" },
+        { name: "S.Y.A. Investments", url: "#", logo: "https://via.placeholder.com/300x100?text=SYA" }
+      ]
+    };
+
+    // Populate UI
+    document.getElementById('fullName').textContent = user.name;
+    document.getElementById('title').textContent = user.title;
+    document.getElementById('avatar').src = user.avatar;
+    document.getElementById('phoneNumber').textContent = user.phone;
+
+    const emailList = document.getElementById('emailList');
+    emailList.innerHTML = "";
+    user.emails.forEach(e=>{
+      const node = document.createElement('div');
+      node.className = 'email-item';
+      node.innerHTML = `
+        <div class="email-icon">✉️</div>
+        <div class="email-text">
+          <a class="address" href="mailto:${e.address}">${e.address}</a>
+          <div class="meta">${e.company || ''}</div>
+        </div>
+      `;
+      emailList.appendChild(node);
+    });
+
+    const companyGrid = document.getElementById('companyGrid');
+    companyGrid.innerHTML = "";
+    user.companies.forEach(c=>{
+      const card = document.createElement('div');
+      card.className = 'company';
+      card.innerHTML = `
+        <div style="display:flex;gap:12px;align-items:center">
+          <div class="logo"><img src="${c.logo}" alt="${c.name}" style="max-height:64px;object-fit:contain"/></div>
+        </div>
+        <div style="margin-top:auto">
+          <div class="name">${c.name}</div>
+          <a href="${c.url}" target="_blank">${c.url.replace(/^https?:\/\//,'')}</a>
+        </div>
+      `;
+      companyGrid.appendChild(card);
+    });
+
+    // Simple tab switching
+    document.querySelectorAll('.tab-btn').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const tab = btn.getAttribute('data-tab');
+        document.querySelectorAll('.tab-panel').forEach(p=>p.style.display='none');
+        document.getElementById(tab).style.display='block';
+      });
+    });
+
+    // small: make avatar clickable to upload local file (optional)
+    document.getElementById('avatar').addEventListener('click', ()=>{
+      const inp = document.createElement('input');
+      inp.type = 'file';
+      inp.accept = 'image/*';
+      inp.onchange = e=>{
+        const f = e.target.files[0];
+        if(!f) return;
+        const reader = new FileReader();
+        reader.onload = ev=>{
+          document.getElementById('avatar').src = ev.target.result;
+        };
+        reader.readAsDataURL(f);
+      };
+      inp.click();
+    });
+  </script>
+</body>
+</html>
